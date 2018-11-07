@@ -1,0 +1,28 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: pwonline-orders-status-consumer
+#  zipkin:
+#    base-url: http://localhost:7700
+#  sleuth:
+#    sampler:
+#      percentage: 1.0
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+    static-path-pattern: /static/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://47.93.30.178:6001/eureka/
+feign:
+  hystrix:
+    enabled: true
+
+demo-usr-provider:
+  ribbon:
+    NFloadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+logging:
+  level: debug

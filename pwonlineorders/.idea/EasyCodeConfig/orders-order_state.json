@@ -1,0 +1,23 @@
+{
+  "obj" : null,
+  "name" : "OrderState",
+  "comment" : null,
+  "fullColumn" : [ {
+    "obj" : null,
+    "name" : "stateId",
+    "comment" : null,
+    "type" : null,
+    "ext" : null
+  }, {
+    "obj" : null,
+    "name" : "stateType",
+    "comment" : null,
+    "type" : null,
+    "ext" : null
+  } ],
+  "pkColumn" : null,
+  "otherColumn" : null,
+  "savePackageName" : "com.example.pwonlineordersstatusprovider",
+  "savePath" : "./com/example/pwonlineordersstatusprovider",
+  "saveModelName" : "pwonline-orders-modle"
+}
