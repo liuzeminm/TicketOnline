@@ -10,6 +10,14 @@
         <option value="$PROJECT_DIR$/pwonline-orders-status-provider/pom.xml" />
         <option value="$PROJECT_DIR$/pwonline-orders-status-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/pwonline-orders-create-time-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-charge-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-charge-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-orders-update-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-orders-update-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-orders-add-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-orders-add-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-orders-back-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-orders-back-consumer/pom.xml" />
       </list>
     </option>
   </component>

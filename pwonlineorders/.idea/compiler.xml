@@ -6,11 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="pwonline-charge-consumer" />
+        <module name="pwonline-charge-provider" />
+        <module name="pwonline-orders-add-consumer" />
+        <module name="pwonline-orders-add-provider" />
+        <module name="pwonline-orders-back-consumer" />
+        <module name="pwonline-orders-back-provider" />
+        <module name="pwonline-orders-common" />
         <module name="pwonline-orders-create-time-provider" />
         <module name="pwonline-orders-show-consumer" />
         <module name="pwonline-orders-show-provider" />
         <module name="pwonline-orders-status-consumer" />
         <module name="pwonline-orders-status-provider" />
+        <module name="pwonline-orders-update-consumer" />
+        <module name="pwonline-orders-update-provider" />
         <module name="pwonlineorderscommon" />
       </profile>
     </annotationProcessing>
