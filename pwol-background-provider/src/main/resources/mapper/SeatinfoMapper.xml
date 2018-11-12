@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pwol.pwolbackgroundprovider.mappin.SeatinfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.pwol.pwolbackgroundprovider.pojo.Seatinfo" >
+    <id column="seatid" property="seatid" jdbcType="INTEGER" />
+    <result column="floor" property="floor" jdbcType="INTEGER" />
+    <result column="stand" property="stand" jdbcType="INTEGER" />
+    <result column="row" property="row" jdbcType="INTEGER" />
+    <result column="seat" property="seat" jdbcType="INTEGER" />
+    <result column="ticketprice" property="ticketprice" jdbcType="DOUBLE" />
+    <result column="seatstatus" property="seatstatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    seatid, floor, stand, row, seat, ticketprice, seatstatus
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.pwol.pwolbackgroundprovider.pojo.SeatinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from seatinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from seatinfo
+    where seatid = #{seatid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from seatinfo
+    where seatid = #{seatid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.pwol.pwolbackgroundprovider.pojo.SeatinfoExample" >
+    delete from seatinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.pwol.pwolbackgroundprovider.pojo.Seatinfo" >
+    insert into seatinfo (seatid, floor, stand, 
+      row, seat, ticketprice, 
+      seatstatus)
+    values (#{seatid,jdbcType=INTEGER}, #{floor,jdbcType=INTEGER}, #{stand,jdbcType=INTEGER}, 
+      #{row,jdbcType=INTEGER}, #{seat,jdbcType=INTEGER}, #{ticketprice,jdbcType=DOUBLE}, 
+      #{seatstatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.pwol.pwolbackgroundprovider.pojo.Seatinfo" >
+    insert into seatinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seatid != null" >
+        seatid,
+      </if>
+      <if test="floor != null" >
+        floor,
+      </if>
+      <if test="stand != null" >
+        stand,
+      </if>
+      <if test="row != null" >
+        row,
+      </if>
+      <if test="seat != null" >
+        seat,
+      </if>
+      <if test="ticketprice != null" >
+        ticketprice,
+      </if>
+      <if test="seatstatus != null" >
+        seatstatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seatid != null" >
+        #{seatid,jdbcType=INTEGER},
+      </if>
+      <if test="floor != null" >
+        #{floor,jdbcType=INTEGER},
+      </if>
+      <if test="stand != null" >
+        #{stand,jdbcType=INTEGER},
+      </if>
+      <if test="row != null" >
+        #{row,jdbcType=INTEGER},
+      </if>
+      <if test="seat != null" >
+        #{seat,jdbcType=INTEGER},
+      </if>
+      <if test="ticketprice != null" >
+        #{ticketprice,jdbcType=DOUBLE},
+      </if>
+      <if test="seatstatus != null" >
+        #{seatstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.pwol.pwolbackgroundprovider.pojo.SeatinfoExample" resultType="java.lang.Integer" >
+    select count(*) from seatinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update seatinfo
+    <set >
+      <if test="record.seatid != null" >
+        seatid = #{record.seatid,jdbcType=INTEGER},
+      </if>
+      <if test="record.floor != null" >
+        floor = #{record.floor,jdbcType=INTEGER},
+      </if>
+      <if test="record.stand != null" >
+        stand = #{record.stand,jdbcType=INTEGER},
+      </if>
+      <if test="record.row != null" >
+        row = #{record.row,jdbcType=INTEGER},
+      </if>
+      <if test="record.seat != null" >
+        seat = #{record.seat,jdbcType=INTEGER},
+      </if>
+      <if test="record.ticketprice != null" >
+        ticketprice = #{record.ticketprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.seatstatus != null" >
+        seatstatus = #{record.seatstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update seatinfo
+    set seatid = #{record.seatid,jdbcType=INTEGER},
+      floor = #{record.floor,jdbcType=INTEGER},
+      stand = #{record.stand,jdbcType=INTEGER},
+      row = #{record.row,jdbcType=INTEGER},
+      seat = #{record.seat,jdbcType=INTEGER},
+      ticketprice = #{record.ticketprice,jdbcType=DOUBLE},
+      seatstatus = #{record.seatstatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.pwol.pwolbackgroundprovider.pojo.Seatinfo" >
+    update seatinfo
+    <set >
+      <if test="floor != null" >
+        floor = #{floor,jdbcType=INTEGER},
+      </if>
+      <if test="stand != null" >
+        stand = #{stand,jdbcType=INTEGER},
+      </if>
+      <if test="row != null" >
+        row = #{row,jdbcType=INTEGER},
+      </if>
+      <if test="seat != null" >
+        seat = #{seat,jdbcType=INTEGER},
+      </if>
+      <if test="ticketprice != null" >
+        ticketprice = #{ticketprice,jdbcType=DOUBLE},
+      </if>
+      <if test="seatstatus != null" >
+        seatstatus = #{seatstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seatid = #{seatid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.pwol.pwolbackgroundprovider.pojo.Seatinfo" >
+    update seatinfo
+    set floor = #{floor,jdbcType=INTEGER},
+      stand = #{stand,jdbcType=INTEGER},
+      row = #{row,jdbcType=INTEGER},
+      seat = #{seat,jdbcType=INTEGER},
+      ticketprice = #{ticketprice,jdbcType=DOUBLE},
+      seatstatus = #{seatstatus,jdbcType=VARCHAR}
+    where seatid = #{seatid,jdbcType=INTEGER}
+  </update>
+</mapper>
