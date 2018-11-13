@@ -1,5 +1,6 @@
 package cn.pwonlineordersconsumer.service.impl;
 
+import cn.pwonlineordersconsumer.service.CancleOrderService;
 import cn.pwonlineordersconsumer.service.CurrentTimeService;
 import cn.pwonlineordersconsumer.service.OrderIdCreateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,14 @@ import java.util.Random;
 
 @Service
 public class OrderIdCreateServiceImpl implements OrderIdCreateService {
+    // 获取当前时间
     @Autowired
     private CurrentTimeService createTimeService;
-    // 获取当前账户
+    // 订单取消
+    @Autowired
+    private CancleOrderService cancleOrderService;
+
+    // 获取当前账户信息
     public String getPersonInfo() {
         return "55555555555";
     }

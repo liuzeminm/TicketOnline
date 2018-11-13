@@ -12,6 +12,6 @@ import static sql.SqlCommons.SQL_CREATE_NEW;
 @Mapper
 public interface CreateOrdersDao {
     // 新建订单
-    @Insert(value = "insert into orders("+SQL_CREATE_NEW +") values(#{o.orderId},#{o.orderPersonalId},#{o.orderSellerId},#{o.orderStateId},#{o.orderPersonalstateId},#{o.orderSellstateId},#{o.orderCreateTime},#{o.orderCommotity},#{o.orderDeliveryId},#{o.orderFinishTime},#{o.orderChargeTime},#{o.orderDelstartTime},#{o.orderDelreciveTime},#{o.orderGoodsretureTime})")
+    @Insert(value = "insert into orders("+SQL_CREATE_NEW +") values(#{o.orderId},#{o.orderPersonalId},#{o.orderSellerId},#{o.orderStateId},#{o.orderPersonalstateId},#{o.orderSellstateId},#{o.orderCreateTime},#{o.orderCommotity},#{o.orderDeliveryId},#{o.orderFinishTime},#{o.orderChargeTime},#{o.orderDelstartTime},#{o.orderDelreciveTime})")
     int addorders(@Param("o") Orders orders);
 }

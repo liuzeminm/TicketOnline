@@ -11,7 +11,7 @@ public class TestMQ {
     @Autowired
     private Sender sd;
     @RequestMapping(value = "mqtest",method = RequestMethod.POST)
-    public String send(){
-        return sd.send();
+    public String send(String msg){
+        return sd.send(msg);
     }
 }

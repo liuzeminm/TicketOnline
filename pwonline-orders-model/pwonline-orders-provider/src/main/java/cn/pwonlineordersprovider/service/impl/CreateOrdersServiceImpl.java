@@ -3,6 +3,7 @@ package cn.pwonlineordersprovider.service.impl;
 import cn.pwonlineordersprovider.dao.CreateOrdersDao;
 import cn.pwonlineordersprovider.service.CreateOrdersService;
 import cn.pwonlineordersprovider.util.RedisUtil;
+import com.alibaba.fastjson.JSON;
 import entity.Orders;
 import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,10 @@ public class CreateOrdersServiceImpl implements CreateOrdersService {
 
         }
         int addorders = createOrdersDao.addorders(orders);
-        System.out.println(addorders);
         String result = null;
         if (addorders == 1){
+            redisUtil.set(orders.getOrderId(), JSON.toJSON(orders),1000*60*15);
+            System.out.println(redisUtil.get(orders.getOrderId()));
             result = "创建成功！";
         }else {
             result = "创建失败！";

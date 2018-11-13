@@ -10,8 +10,9 @@ import java.util.Date;
 public class Sender {
     @Autowired
     private AmqpTemplate amqpTemplate;
-    public String send(){
-        String content = "liuzemin" + new Date();
+    public String send(String msg){
+        msg = "liuzemin";
+        String content = msg + new Date();
         System.out.println("Sender:" + content);
         this.amqpTemplate.convertAndSend("hello",content);
         return "Sender:" + content;

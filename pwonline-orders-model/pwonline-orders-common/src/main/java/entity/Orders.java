@@ -2,6 +2,7 @@ package entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  * @author makejava
  * @since 2018-11-03 14:22:38
  */
-public class Orders {
+public class Orders implements Serializable {
     //订单序列号
     private Integer id;
     //订单编号
