@@ -1,8 +1,10 @@
 package cn.pwol.pwolbackgroundprovider.service.impl;
 
+import cn.pwol.pwolbackgroundprovider.mappin.BannerinfoMapper;
 import cn.pwol.pwolbackgroundprovider.mappin.SeatinfoMapper;
 import cn.pwol.pwolbackgroundprovider.mappin.SkuinfoMapper;
 import cn.pwol.pwolbackgroundprovider.mappin.TicketinfoMapper;
+import cn.pwol.pwolbackgroundprovider.pojo.Bannerinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.Seatinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.Skuinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.Ticketinfo;
@@ -16,6 +18,8 @@ public class UpDateTheaterInforMationImpl implements UpDateTheaterInforMation {
     private SeatinfoMapper seatinfoMapper;
     @Autowired
     private TicketinfoMapper ticketinfoMapper;
+    @Autowired
+    private BannerinfoMapper bannerinfoMapper;
     @Override
     public int upDateskuinfo(Skuinfo skuinfo) {
         return skuinfoMapper.updateByPrimaryKeySelective(skuinfo);
@@ -31,5 +35,10 @@ public class UpDateTheaterInforMationImpl implements UpDateTheaterInforMation {
     public int upDateTicketInfo(Ticketinfo ticketinfo) {
 
         return ticketinfoMapper.updateByPrimaryKeySelective(ticketinfo);
+    }
+
+    @Override
+    public int upDateBannerInfo(Bannerinfo bannerinfo) {
+        return bannerinfoMapper.updateByPrimaryKeySelective(bannerinfo);
     }
 }
