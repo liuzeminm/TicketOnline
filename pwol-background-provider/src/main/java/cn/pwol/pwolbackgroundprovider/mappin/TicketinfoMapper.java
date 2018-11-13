@@ -4,6 +4,7 @@ import cn.pwol.pwolbackgroundprovider.pojo.Ticketinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.TicketinfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface TicketinfoMapper {
     int countByExample(TicketinfoExample example);
@@ -27,4 +28,6 @@ public interface TicketinfoMapper {
     int updateByPrimaryKeySelective(Ticketinfo record);
 
     int updateByPrimaryKey(Ticketinfo record);
+    @Select(value = "SELECT ticketid FROM ticketinfo WHERE ticketid = 1 ")
+    int selectOneStste(int ticketid);
 }

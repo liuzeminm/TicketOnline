@@ -4,6 +4,7 @@ import cn.pwol.pwolbackgroundprovider.pojo.Bannerinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.BannerinfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface BannerinfoMapper {
     int countByExample(BannerinfoExample example);
@@ -27,4 +28,7 @@ public interface BannerinfoMapper {
     int updateByPrimaryKeySelective(Bannerinfo record);
 
     int updateByPrimaryKey(Bannerinfo record);
+
+    @Select(value = "SELECT bennerid FROM ticketinfo WHERE bennerid = 1 ")
+    int selectOneStste(int bennerid);
 }
