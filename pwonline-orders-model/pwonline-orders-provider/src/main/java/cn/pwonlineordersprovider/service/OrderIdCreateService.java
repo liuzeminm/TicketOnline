@@ -1,4 +1,4 @@
-package cn.pwonlineordersconsumer.service;
+package cn.pwonlineordersprovider.service;
 
 /**
  * 创建订单编号接口

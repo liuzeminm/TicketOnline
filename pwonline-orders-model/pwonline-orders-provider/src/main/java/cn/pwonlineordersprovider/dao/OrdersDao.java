@@ -18,16 +18,25 @@ import static sql.SqlCommons.SQL_COMMON;
  * @since 2018-11-03 14:22:38
  */
 @Repository
-@Mapper
 public interface OrdersDao {
     // 个人详情页订单列表
-    @Select(value = "select" + SQL_COMMON + "from orders where" +
-            "order_personal_id=#{personal_id}")
     List<Orders> getAll(@Param("personal_id") String personal_id);
 
     // 订单具体详情表
-    @Select(value = "select" + SQL_COMMON + "from orders where " +
-            "order_id=#{order_id}")
     Orders getOne(@Param("order_id") String order_id);
 
+    // 新建订单
+    int addorders(@Param("o") Orders orders);
+
+    // 订单取消
+    int cancleordersdao(@Param("orderid") String orderid);
+
+    // 修改订单状态
+    int changeordersstatusdao(@Param("orderstateid")int orderstateid,@Param("orderid") String orderid);
+
+    // 修改订单用户状态
+    int changePerStatusdao(@Param("orderid") String orderid,@Param("perstatusid") int perstatusid);
+
+    // 修改订单商家状态
+    int changesellstatedao(@Param("orderid") String orderid, @Param("sellid") int sellid);
 }

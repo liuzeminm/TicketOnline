@@ -1,12 +1,12 @@
 package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.SearchInventoryDao;
-import cn.pwonlineordersprovider.service.GetTicketInventory;
+import cn.pwonlineordersprovider.service.GetTicketInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GetTicketInventoryImpl implements GetTicketInventory {
+public class GetTicketInventoryServiceImpl implements GetTicketInventoryService {
     @Autowired
     private SearchInventoryDao searchInventoryDao;
 

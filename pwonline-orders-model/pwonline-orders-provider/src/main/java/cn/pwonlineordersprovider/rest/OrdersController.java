@@ -3,6 +3,7 @@ package cn.pwonlineordersprovider.rest;
 import cn.pwonlineordersprovider.service.CreateOrdersService;
 import com.alibaba.fastjson.JSON;
 import entity.Orders;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
@@ -17,7 +18,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
+@RequestMapping(value = "/order")
+@Api(value="/test", tags="订单模块测试")
 public class OrdersController {
+    // 创建订单
     @Autowired
     private CreateOrdersService createOrdersService;
     @RequestMapping(value = "createorders",method = RequestMethod.POST)

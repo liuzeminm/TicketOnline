@@ -1,3 +1,4 @@
+/*
 package cn.pwonlineordersprovider.rest;
 
 import cn.pwonlineordersprovider.service.GetTicketInventory;
@@ -32,3 +33,4 @@ public class TicketInventoryContro {
         return JSON.toJSONString(s);
     }
 }
+*/

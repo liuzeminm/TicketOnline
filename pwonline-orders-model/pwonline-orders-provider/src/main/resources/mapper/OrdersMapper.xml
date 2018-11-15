@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pwonlineordersprovider.dao.OrdersDao" >
+    <resultMap id="BaseResultMap" type="cn.pojo.Search" >
+        <id column="shid" property="shid" jdbcType="INTEGER" />
+        <result column="shtype" property="shtype" jdbcType="VARCHAR" />
+    </resultMap>
+    <!--订单公共模块，供订单展示-->
+    <sql id="Orders_Commons">
+        order_id,order_personal_id,order_seller_id,order_state_id,order_personalstate_id,order_sellstate_id,order_create_time,order_commotity,order_delivery_id,order_finish_time,order_charge_time,order_delstart_time,order_delrecive_time
+    </sql>
+    <!--订单公共模块，动态修改-->
+    <sql id="Orders_Common">
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="order_id != null" >
+                order_id,
+            </if>
+            <if test="order_personal_id != null" >
+                order_personal_id,
+            </if>
+            <if test="order_seller_id != null" >
+                order_seller_id,
+            </if>
+            <if test="order_state_id != null" >
+                order_state_id,
+            </if>
+            <if test="order_personalstate_id != null" >
+                order_personalstate_id,
+            </if>
+            <if test="order_sellstate_id != null" >
+                order_sellstate_id,
+            </if>
+            <if test="order_create_time != null" >
+                order_create_time,
+            </if>
+            <if test="order_commotity != null" >
+                order_commotity,
+            </if>
+            <if test="order_delivery_id != null" >
+                order_delivery_id,
+            </if>
+            <if test="order_finish_time != null" >
+                order_finish_time,
+            </if>
+            <if test="order_charge_time != null" >
+                order_charge_time,
+            </if>
+            <if test="order_delstart_time != null" >
+                order_delstart_time,
+            </if>
+            <if test="order_delrecive_time != null" >
+                order_delrecive_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="order_id != null" >
+                #{o.orderId},
+            </if>
+            <if test="order_personal_id != null" >
+                #{o.orderPersonalId},
+            </if>
+            <if test="order_seller_id != null" >
+                #{o.orderSellerId},
+            </if>
+            <if test="order_state_id != null" >
+                #{o.orderStateId},
+            </if>
+            <if test="order_personalstate_id != null" >
+                #{o.orderPersonalstateId},
+            </if>
+            <if test="order_sellstate_id != null" >
+                #{o.orderSellstateId},
+            </if>
+            <if test="order_create_time != null" >
+                #{o.orderCreateTime},
+            </if>
+            <if test="order_commotity != null" >
+                #{o.orderCommotity},
+            </if>
+            <if test="order_delivery_id != null" >
+                #{o.orderDeliveryId},
+            </if>
+            <if test="order_finish_time != null" >
+                #{o.orderFinishTime},
+            </if>
+            <if test="order_charge_time != null" >
+                #{o.orderChargeTime},
+            </if>
+            <if test="order_delstart_time != null" >
+                #{o.orderDelstartTime},
+            </if>
+            <if test="order_delrecive_time != null" >
+                #{o.orderDelreciveTime},
+            </if>
+        </trim>
+    </sql>
+    <!--个人详情页订单列表-->
+    <select id="getAll" resultMap="entity.Orders" parameterType="java.lang.String" >
+        select
+        <include refid="Orders_Commons"/>
+        from orders where
+        order_personal_id=#{personal_id}
+    </select>
+    <!--订单具体详情表-->
+    <select id="getOne" resultMap="entity.Orders" parameterType="java.lang.String" >
+        select
+        <include refid="Orders_Commons" />
+        from orders where
+        order_id=#{order_id}
+    </select>
+    <!--创建订单-->
+    <insert id="addorders" parameterType="entity.Orders" >
+    insert into orders
+        <include refid="Orders_Common"/>
+    </insert>
+    <!--订单交易取消-->
+    <update id="cancleordersdao" parameterType="java.lang.String" >
+        update search orders
+          set  order_state_id = 2
+        where order_id=#{orderid}
+    </update>
+    <!--修改订单状态-->
+    <update id="changeordersstatusdao"  >
+        update orders
+        set order_state_id =#{orderstateid}
+        where order_id = #{orderid}
+    </update>
+    <!--修改订单用户状态-->
+    <update id="changePerStatusdao"  >
+        update orders
+        set order_personalstate_id = #{perstatusid}
+        where order_id = #{orderid}
+    </update>
+    <!--修改订单商家状态-->
+    <update id="changesellstatedao"  >
+    update orders
+    set order_sellstate_id = #{sellid}
+    where  order_id = #{orderid}
+  </update>
+</mapper>

@@ -1,18 +1,20 @@
-package cn.pwonlineordersprovider.service;
+package cn.pwonlineordersprovider.service.impl;
 
-import cn.pwonlineordersprovider.dao.ChangeSellStateDao;
+import cn.pwonlineordersprovider.dao.OrdersDao;
+import cn.pwonlineordersprovider.service.ChangeSellStateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import static enu.SellState.*;
 
-@RestController
-public class ChangeSellStateServiceImpl {
+@Service
+public class ChangeSellStateServiceImpl implements ChangeSellStateService {
     @Autowired
-    private ChangeSellStateDao changeSellStateDao;
-    @RequestMapping(value = "changesellstate",method = RequestMethod.PUT)
+    private OrdersDao changeSellStateDao;
+    @Override
     public String changesellstateservice(String orderid,String sellid){
         int sellids = Integer.parseInt(sellid);
         int changesellstatedao = changeSellStateDao.changesellstatedao(orderid, sellids);

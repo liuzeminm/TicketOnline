@@ -1,5 +1,5 @@
 package cn.pwonlineordersprovider.service;
 
-public interface GetTicketInventory {
+public interface GetTicketInventoryService {
     String getticketInventory(String ticketinfo,String ticketseat);
 }

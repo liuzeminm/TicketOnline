@@ -1,15 +1,15 @@
 package cn.pwonlineordersprovider.service.impl;
 
-import cn.pwonlineordersprovider.dao.CreateOrdersDao;
+import cn.pwonlineordersprovider.dao.OrdersDao;
 import cn.pwonlineordersprovider.service.CreateOrdersService;
+import cn.pwonlineordersprovider.service.CurrentTimeService;
+import cn.pwonlineordersprovider.service.OrderIdCreateService;
 import cn.pwonlineordersprovider.util.RedisUtil;
 import com.alibaba.fastjson.JSON;
 import entity.Orders;
-import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,12 +18,28 @@ import java.util.Map;
  */
 @Service
 public class CreateOrdersServiceImpl implements CreateOrdersService {
+    // 创建订单dao层
     @Autowired
-    private CreateOrdersDao createOrdersDao;
+    private OrdersDao ordersDao;
+
+    // 获取当前时间，该时间为订单生成时间
+    @Autowired
+    private CurrentTimeService currentTimeService;
+
+    // 获取订单编号
+    @Autowired
+    private OrderIdCreateService orderIdCreateService;
+
+    // redis连接池
     @Autowired
     private RedisUtil redisUtil;
     @Override
     public String createservice(Orders orders) {
+        // 判断库存
+        
+        
+        // 订单创建时间
+        String orderstarttime = currentTimeService.dateprovide();
         Map<String,Orders> ordersMap = new HashMap<String,Orders>();
         // 获取订单信息
         Orders orders1 = new Orders();
@@ -33,7 +49,7 @@ public class CreateOrdersServiceImpl implements CreateOrdersService {
         if (orders.getOrderStateId() == 2){
 
         }
-        int addorders = createOrdersDao.addorders(orders);
+        int addorders = ordersDao.addorders(orders);
         String result = null;
         if (addorders == 1){
             redisUtil.set(orders.getOrderId(), JSON.toJSON(orders),1000*60*15);
