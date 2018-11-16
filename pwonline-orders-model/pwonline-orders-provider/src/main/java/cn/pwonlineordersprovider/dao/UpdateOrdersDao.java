@@ -11,9 +11,7 @@ public interface UpdateOrdersDao {
     // 修改订单状态
     @Update(value = "update orders set order_state_id = #{orderstateid} where order_id=#{orderid}")
     int updateordersdao(@Param("orderstateid") int orderstateid,@Param("orderid") String orderid);
-    // 未支付
-    // 支付成功
-    // 退款
+
 
 
 

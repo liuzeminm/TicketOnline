@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        alert(1);
+        $.getJSON("payment-pay","order_id=11111&amp;money=200&amp;order_name=222",function (result) {
+            alert(result);
+            $("div").html(result);
+        })
+    })
+</script>
+<body>
+11111
+    <div></div>
+</body>
+</html>

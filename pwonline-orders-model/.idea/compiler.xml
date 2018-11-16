@@ -9,6 +9,8 @@
         <module name="pwonline-orders-common" />
         <module name="pwonline-orders-consumer" />
         <module name="pwonline-orders-provider" />
+        <module name="pwonline-payment-consumer" />
+        <module name="pwonline-payment-provider" />
         <module name="test-eureka" />
       </profile>
     </annotationProcessing>

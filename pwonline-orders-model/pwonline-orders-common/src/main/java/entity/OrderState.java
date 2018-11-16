@@ -1,11 +1,10 @@
 package entity;
 
-
 /**
  * (OrderState)表实体类
  *
  * @author makejava
- * @since 2018-11-07 11:04:47
+ * @since 2018-11-16 17:04:05
  */
 public class OrderState {
     //订单状态编号

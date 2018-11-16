@@ -1,0 +1,23 @@
+{
+  "obj" : null,
+  "name" : "OrderState",
+  "comment" : null,
+  "fullColumn" : [ {
+    "obj" : null,
+    "name" : "stateId",
+    "comment" : null,
+    "type" : null,
+    "ext" : null
+  }, {
+    "obj" : null,
+    "name" : "stateType",
+    "comment" : null,
+    "type" : null,
+    "ext" : null
+  } ],
+  "pkColumn" : null,
+  "otherColumn" : null,
+  "savePackageName" : "",
+  "savePath" : "./pwonline-orders-common/src/main/java",
+  "saveModelName" : "pwonline-orders-common"
+}

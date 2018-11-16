@@ -4,10 +4,24 @@ package cn.pwonlineordersprovider.transfer;
  * 订单列表实体类
  */
 public class OrdersTransfer {
+
+    // 订单编号
     private String order_id;
-    private String order_sell_info;
+
+    // 票务信息
     private String order_commotity;
-    private Double order_money;
+
+    // 座位信息
+    private String seat_info;
+
+    // 票务数目
+    private int tickets_num;
+
+    // 订单金额
+    private String order_money;
+
+    // 订单状态
+    private String order_state;
 
     public String getOrder_id() {
         return order_id;
@@ -15,14 +29,6 @@ public class OrdersTransfer {
 
     public void setOrder_id(String order_id) {
         this.order_id = order_id;
-    }
-
-    public String getOrder_sell_info() {
-        return order_sell_info;
-    }
-
-    public void setOrder_sell_info(String order_sell_info) {
-        this.order_sell_info = order_sell_info;
     }
 
     public String getOrder_commotity() {
@@ -33,11 +39,19 @@ public class OrdersTransfer {
         this.order_commotity = order_commotity;
     }
 
-    public Double getOrder_money() {
+    public int getTickets_num() {
+        return tickets_num;
+    }
+
+    public void setTickets_num(int tickets_num) {
+        this.tickets_num = tickets_num;
+    }
+
+    public String getOrder_money() {
         return order_money;
     }
 
-    public void setOrder_money(Double order_money) {
+    public void setOrder_money(String order_money) {
         this.order_money = order_money;
     }
 
@@ -48,7 +62,11 @@ public class OrdersTransfer {
     public void setOrder_state(String order_state) {
         this.order_state = order_state;
     }
+    public String getSeat_info() {
+        return seat_info;
+    }
 
-    private String order_state;
-
+    public void setSeat_info(String seat_info) {
+        this.seat_info = seat_info;
+    }
 }

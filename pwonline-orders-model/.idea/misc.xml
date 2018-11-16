@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/pwonline-orders-provider/pom.xml" />
         <option value="$PROJECT_DIR$/pwonline-orders-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/test-eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-payment-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/pwonline-payment-consumer/pom.xml" />
       </list>
     </option>
   </component>
