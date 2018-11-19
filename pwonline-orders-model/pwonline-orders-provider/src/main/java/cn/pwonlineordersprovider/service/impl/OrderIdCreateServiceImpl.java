@@ -1,6 +1,5 @@
 package cn.pwonlineordersprovider.service.impl;
 
-import cn.pwonlineordersprovider.service.CancleOrderService;
 import cn.pwonlineordersprovider.service.CurrentTimeService;
 import cn.pwonlineordersprovider.service.OrderIdCreateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +26,14 @@ public class OrderIdCreateServiceImpl implements OrderIdCreateService {
     }
     @Override
     public String getOrderId(){
-        String createtime = createTimeService.dateprovide();
+        String createtime = createTimeService.dateprovideString();
         String result = null;
-        if (createtime.length()==3){
+        if (createtime.length() == 3){
             result = "创建订单编号失败";
         }else {
             String getpersoninfo = getPersonInfo().substring(0,4);
             String getgoodsinfo = getGoodsInfo().substring(0,4);
+            // 四位随机数
             String str="0123456789";
             StringBuilder sb=new StringBuilder(4);
             for(int i=0;i<4;i++) {

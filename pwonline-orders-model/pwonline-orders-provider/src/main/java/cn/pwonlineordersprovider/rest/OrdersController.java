@@ -1,8 +1,9 @@
 package cn.pwonlineordersprovider.rest;
 
 import cn.pwonlineordersprovider.service.CreateOrdersService;
+import cn.pwonlineordersprovider.service.OrderDetailsShowService;
 import cn.pwonlineordersprovider.service.OrdersShowService;
-import cn.pwonlineordersprovider.transfer.OrdersTransfer;
+import cn.pwonlineordersprovider.vo.OrdersTransfer;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -29,6 +30,11 @@ public class OrdersController {
     // 订单列表展示
     @Autowired
     private OrdersShowService ordersShowService;
+    // 订单详情展示
+    @Autowired
+    private OrderDetailsShowService orderDetailsShowService;
+
+
     @ApiOperation(value="查看订单列表", notes = "分页查询")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "per_id",value = "个人账户ID",dataType = "String",paramType = "query"),
@@ -45,14 +51,22 @@ public class OrdersController {
         return JSON.toJSONString(page);
     }
     // 订单详情展示
-
+    @ApiOperation(value="查看具体订单详情", notes = "详情查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "per_id",value = "订单ID",dataType = "String",paramType = "query"),
+    })
+    @RequestMapping(value = "ordersshow",method = RequestMethod.POST)
+    public String orderinfo(@RequestParam("order_id") String order_id){
+        String orderdetailsshowservice = orderDetailsShowService.orderdetailsshowservice(order_id);
+        return JSON.toJSONString(orderdetailsshowservice);
+    }
 
 
     // 创建订单
     @Autowired
     private CreateOrdersService createOrdersService;
     @RequestMapping(value = "createorders",method = RequestMethod.POST)
-    public String createOrders(Orders orders){
+    public String createOrders(String per_username,Orders orders){
         String createservice = createOrdersService.createservice(orders);
         return JSON.toJSONString(createservice);
     }

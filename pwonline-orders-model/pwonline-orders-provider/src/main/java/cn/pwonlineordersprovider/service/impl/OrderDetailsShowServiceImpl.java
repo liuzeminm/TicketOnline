@@ -2,8 +2,8 @@ package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.OrdersDao;
 import cn.pwonlineordersprovider.service.OrderDetailsShowService;
-import cn.pwonlineordersprovider.transfer.OrderDetailsInfo;
-import cn.pwonlineordersprovider.transfer.OrdersTransfer;
+import cn.pwonlineordersprovider.vo.OrderDetailsInfo;
+import cn.pwonlineordersprovider.vo.OrdersTransfer;
 import cn.pwonlineordersprovider.util.RedisUtil;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,16 +3,14 @@ package cn.pwonlineordersprovider.service.impl;
 import cn.pwonlineordersprovider.dao.OrderStatusDao;
 import cn.pwonlineordersprovider.dao.OrdersDao;
 import cn.pwonlineordersprovider.service.OrdersShowService;
-import cn.pwonlineordersprovider.transfer.OrdersTransfer;
+import cn.pwonlineordersprovider.vo.OrdersTransfer;
 import cn.pwonlineordersprovider.util.RedisUtil;
-import com.alibaba.fastjson.JSON;
 import entity.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 订单列表展示

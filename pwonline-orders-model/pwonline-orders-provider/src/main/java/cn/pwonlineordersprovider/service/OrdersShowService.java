@@ -1,9 +1,8 @@
 package cn.pwonlineordersprovider.service;
 
-import cn.pwonlineordersprovider.transfer.OrdersTransfer;
+import cn.pwonlineordersprovider.vo.OrdersTransfer;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 订单展示模块

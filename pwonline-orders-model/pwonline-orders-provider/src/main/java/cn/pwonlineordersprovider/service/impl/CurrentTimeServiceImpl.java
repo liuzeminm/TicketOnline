@@ -12,9 +12,15 @@ import java.util.Date;
 public class CurrentTimeServiceImpl implements CurrentTimeService {
     @RequestMapping(value = "dateProvide", method = RequestMethod.GET)
     @Override
-    public String dateprovide() {
-        //设置日期格式
+    public String dateprovideString() {
+        //设置日期格式String
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+        return df.format(new Date());
+    }
+    @Override
+    public String dateprovideDate(){
+        //设置日期格式Date
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return df.format(new Date());
     }
 }

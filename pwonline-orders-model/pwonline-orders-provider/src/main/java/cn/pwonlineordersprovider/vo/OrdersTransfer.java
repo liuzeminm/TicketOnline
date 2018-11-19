@@ -1,4 +1,4 @@
-package cn.pwonlineordersprovider.transfer;
+package cn.pwonlineordersprovider.vo;
 
 /**
  * 订单列表实体类

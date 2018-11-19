@@ -1,4 +1,4 @@
-package cn.pwonlineordersprovider.transfer;
+package cn.pwonlineordersprovider.vo;
 
 import java.util.Date;
 

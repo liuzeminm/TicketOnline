@@ -34,29 +34,39 @@ public class CreateOrdersServiceImpl implements CreateOrdersService {
     @Autowired
     private RedisUtil redisUtil;
     @Override
-    public String createservice(Orders orders) {
-        // 判断库存
-        
-        
-        // 订单创建时间
-        String orderstarttime = currentTimeService.dateprovide();
-        Map<String,Orders> ordersMap = new HashMap<String,Orders>();
-        // 获取订单信息
-        Orders orders1 = new Orders();
-        // 判断Session是否过期
-
-        // 订单取消
-        if (orders.getOrderStateId() == 2){
-
-        }
-        int addorders = ordersDao.addorders(orders);
+    public String createservice(String per_username,Orders orders) {
+        // 判断登录状态
         String result = null;
-        if (addorders == 1){
-            redisUtil.set(orders.getOrderId(), JSON.toJSON(orders),1000*60*15);
-            System.out.println(redisUtil.get(orders.getOrderId()));
-            result = "创建成功！";
-        }else {
-            result = "创建失败！";
+        if (per_username == "" || per_username.equals("")) {
+            result = JSON.toJSONString("未登录！");
+        } else {
+
+
+
+            // 判断库存
+
+            // 获取商家
+            // 订单创建时间
+            String orderstarttime = currentTimeService.dateprovideDate();
+            Map<String, Orders> ordersMap = new HashMap<String, Orders>();
+            // 获取订单信息
+            Orders orders1 = new Orders();
+
+            // 判断Session是否过期
+
+            // 订单取消
+            if (orders.getOrderStateId() == 2) {
+
+            }
+            int addorders = ordersDao.addorders(orders);
+
+            if (addorders == 1) {
+                redisUtil.set(orders.getOrderId(), JSON.toJSON(orders), 1000 * 60 * 15);
+                System.out.println(redisUtil.get(orders.getOrderId()));
+                result = "创建成功！";
+            } else {
+                result = "创建失败！";
+            }
         }
         return result;
     }
