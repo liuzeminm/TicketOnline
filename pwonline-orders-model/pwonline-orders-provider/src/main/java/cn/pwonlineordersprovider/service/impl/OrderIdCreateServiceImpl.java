@@ -1,5 +1,7 @@
 package cn.pwonlineordersprovider.service.impl;
 
+import cn.pwonlineordersconsumer.controller.PerInfoController;
+import cn.pwonlineordersconsumer.controller.TicketInfoController;
 import cn.pwonlineordersprovider.service.CurrentTimeService;
 import cn.pwonlineordersprovider.service.OrderIdCreateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +19,24 @@ public class OrderIdCreateServiceImpl implements OrderIdCreateService {
     @Autowired
     private CurrentTimeService createTimeService;
     // 获取当前账户信息
-    public String getPersonInfo() {
-        return "55555555555";
-    }
+    @Autowired
+    private PerInfoController perInfoController;
+
     // 获取商品属性参数
-    public String getGoodsInfo() {
-        return "12345678";
-    }
+    @Autowired
+    private TicketInfoController ticketInfoController;
+
     @Override
-    public String getOrderId(){
+    public String getOrderId(String username){
         String createtime = createTimeService.dateprovideString();
         String result = null;
         if (createtime.length() == 3){
             result = "创建订单编号失败";
         }else {
-            String getpersoninfo = getPersonInfo().substring(0,4);
-            String getgoodsinfo = getGoodsInfo().substring(0,4);
+            // 个人账号前四位
+            String getpersoninfo = perInfoController.getperinfo(username).substring(0,4);
+            // 票务账号前四位
+            String getgoodsinfo = ticketInfoController.getticketinfo().substring(0,4);
             // 四位随机数
             String str="0123456789";
             StringBuilder sb=new StringBuilder(4);

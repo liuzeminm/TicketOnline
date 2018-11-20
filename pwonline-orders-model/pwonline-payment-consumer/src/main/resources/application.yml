@@ -1,0 +1,13 @@
+server:
+  port: 8006
+spring:
+  application:
+    name: pwonline-payment-consumer
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://47.95.2.72:6001/eureka/
+    defaultZone: http://localhost:8080/eureka/
+feign:
+  hystrix:
+    enabled: true

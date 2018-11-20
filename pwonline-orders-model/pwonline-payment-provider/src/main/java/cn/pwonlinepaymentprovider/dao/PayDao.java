@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface PayDao {
     @Insert(value = "INSERT INTO payment(pay_id,pay_order_id,pay_money) VALUES(#{p.pay_id},#{p.pay_order_id},#{p.pay_money})")
-    void  addInfo(@Param("p") PayInfo payInfo);
+    int  addInfo(@Param("p") PayInfo payInfo);
 }

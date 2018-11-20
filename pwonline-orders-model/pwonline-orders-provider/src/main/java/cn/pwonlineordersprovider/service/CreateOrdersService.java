@@ -1,12 +1,13 @@
 package cn.pwonlineordersprovider.service;
 
-import entity.Orders;
+import cn.pwonlineordersprovider.vo.Order_Vo;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 
 /**
  * 创建订单接口
  */
 public interface CreateOrdersService {
-    String createservice(String per_username,Orders orders);
+    String createservice(String httpsessionid,String per_username,Order_Vo order_vo) throws ParseException;
 }

@@ -1,15 +1,20 @@
 package cn.pwonlineordersprovider.service.impl;
 
+import cn.pwonlineordersconsumer.controller.PerInfoController;
+import cn.pwonlineordersconsumer.controller.TicketInfoController;
 import cn.pwonlineordersprovider.dao.OrdersDao;
+import cn.pwonlineordersprovider.service.ChangeOrdersStatusService;
 import cn.pwonlineordersprovider.service.CreateOrdersService;
 import cn.pwonlineordersprovider.service.CurrentTimeService;
 import cn.pwonlineordersprovider.service.OrderIdCreateService;
 import cn.pwonlineordersprovider.util.RedisUtil;
+import cn.pwonlineordersprovider.vo.Order_Vo;
 import com.alibaba.fastjson.JSON;
 import entity.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,42 +35,62 @@ public class CreateOrdersServiceImpl implements CreateOrdersService {
     @Autowired
     private OrderIdCreateService orderIdCreateService;
 
+    // 获取个人相关信息
+    @Autowired
+    private PerInfoController perInfoController;
+
+    // 获取票务相关信息
+    @Autowired
+    private TicketInfoController ticketInfoController;
+
+    // 修改订单状态
+    @Autowired
+    private ChangeOrdersStatusService changeOrdersStatusService;
     // redis连接池
     @Autowired
     private RedisUtil redisUtil;
     @Override
-    public String createservice(String per_username,Orders orders) {
+    public String createservice(String httpsessionid,String per_username,Order_Vo order_vo) throws ParseException {
+        Orders orders1 = new Orders();
         // 判断登录状态
         String result = null;
         if (per_username == "" || per_username.equals("")) {
             result = JSON.toJSONString("未登录！");
         } else {
-
-
-
             // 判断库存
-
-            // 获取商家
-            // 订单创建时间
-            String orderstarttime = currentTimeService.dateprovideDate();
-            Map<String, Orders> ordersMap = new HashMap<String, Orders>();
-            // 获取订单信息
-            Orders orders1 = new Orders();
-
-            // 判断Session是否过期
-
-            // 订单取消
-            if (orders.getOrderStateId() == 2) {
-
-            }
-            int addorders = ordersDao.addorders(orders);
-
-            if (addorders == 1) {
-                redisUtil.set(orders.getOrderId(), JSON.toJSON(orders), 1000 * 60 * 15);
-                System.out.println(redisUtil.get(orders.getOrderId()));
-                result = "创建成功！";
+            String getticketinventory = ticketInfoController.getticketinventory(order_vo.getCommodity_info());
+            if (getticketinventory.equals("座位已售出")) {
+                result = JSON.toJSONString("该座位已经售出，无法购买！");
             } else {
-                result = "创建失败！";
+                // 获取商家
+                String commodity_info = order_vo.getTicket_info();
+                orders1.setOrderId(orderIdCreateService.getOrderId(per_username));
+                orders1.setOrderPersonalId(commodity_info);
+                orders1.setOrderSellerId("");
+                // 订单状态(1,"未支付";2,"已取消";3,"待出货";4,"待收货";5,"已收货";6,"待退款";7,"已退款";8,"未退货";9,"已退货")
+                // 新建订单默认为1，未支付状态
+                orders1.setOrderStateId(1);
+                // 用户状态状态(1,"未支付";2,"已支付";3,"未收款";4,"已收款";5,"未退货";6,"已退货")
+                // 新建订单用户状态初始为1,"未支付
+                orders1.setOrderPersonalstateId(1);
+                // 商家状态(1,"无";2,"未出货";3,"已出货";4,"未退款";5,"已退款";6,"未收货";7,"已收货")
+                // 新建订单商家状态初始为1,"无"
+                orders1.setOrderSellstateId(1);
+                orders1.setOrderCommotity(order_vo.getCommodity_info());
+                // 订单创建时间
+                orders1.setOrderCreateTime(currentTimeService.dateprovideDate());
+                redisUtil.set(orders1.getOrderId(), JSON.toJSON(orders1));
+                redisUtil.expire(orders1.getOrderId(), 1000 * 60 * 15);
+                System.out.println(redisUtil.get(orders1.getOrderId()));
+                // 当前sessionid
+                String s = httpsessionid;
+                redisUtil.set("sessionid",s);
+                // 持久化到数据库
+                // 订单超时 修改订单状态为2，已取消
+                if (redisUtil.get(orders1.getOrderId()).equals(null)){
+                    String changeordersstaus = changeOrdersStatusService.changeordersstaus(2, orders1.getOrderId());
+                    result = changeordersstaus;
+                }
             }
         }
         return result;
