@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pwol.pwolsearchprovider.mapping.SearchMapper" >
+  <resultMap id="BaseResultMap" type="cn.pwol.pwolsearchprovider.pojo.TicketInfo" >
+    <id column="ticketid" property="ticketid" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="subcategory" property="subcategory" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="picurl" property="picurl" jdbcType="VARCHAR" />
+    <result column="ticketstatus" property="ticketstatus" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="zan" property="zan" jdbcType="INTEGER" />
+    <result column="skufk" property="skufk" jdbcType="INTEGER" />
+    <result column="supportfk" property="supportfk" jdbcType="INTEGER" />
+    <result column="theaterfk" property="theaterfk" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="SKUMap" type="cn.pwol.pwolsearchprovider.pojo.SKUInfo" >
+    <id column="skuid" property="skuid" jdbcType="INTEGER" />
+    <result column="showdate" property="showdate" jdbcType="TIMESTAMP" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="ticketfk" property="ticketfk" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="TheaterMap" type="cn.pwol.pwolsearchprovider.pojo.TheaterInfo" >
+    <id column="theaterid" property="theaterid" jdbcType="INTEGER" />
+    <result column="theatername" property="theatername" jdbcType="VARCHAR" />
+  </resultMap>
+    <select id="getTicketNumber" resultType="int">
+      select count(distinct ticketid)from ticketinfo ti,skuinfo sk where ticketid=ticketfk
+      <trim>
+        <if test="ti.city != null">
+          and ti.city=#{ti.city}
+        </if>
+        <if test="ti.category != null">
+          and ti.category=#{ti.category}
+        </if>
+        <if test="ti.subcategory != null">
+          and ti.subcategory=#{ti.subcategory}
+        </if>
+        <if test="sk.showdate != null">
+          and sk.showdate=#{sk.showdate}
+        </if>
+      </trim>
+    </select>
+  <select id="getSearchInfo" resultMap="BaseResultMap" >
+    select distinct ticketid,city,title,picurl,ticketstatus,description,theaterfk from ticketinfo ti,skuinfo sk where ticketid=ticketfk
+    <trim>
+      <if test="ti.city != null">
+        and ti.city=#{ti.city}
+      </if>
+      <if test="ti.category != null">
+        and ti.category=#{ti.category}
+      </if>
+      <if test="ti.subcategory != null">
+        and ti.subcategory=#{ti.subcategory}
+      </if>
+      <if test="sk.showdate != null">
+        and sk.showdate=#{sk.showdate}
+      </if>
+    </trim>
+  </select>
+  <select id="getFirstDate" resultMap="SKUMap" parameterType="int">
+    select showdate from skuinfo where ticketfk=#{0} order by showdate asc limit 0,1
+  </select>
+  <select id="getLastDate" resultMap="SKUMap" parameterType="int">
+    select showdate from skuinfo where ticketfk=#{0} order by showdate desc limit 0,1
+  </select>
+  <select id="getMaxTicketPrice" resultMap="SKUMap" parameterType="int">
+    select price from skuinfo where ticketfk=#{0} order by price desc limit 0,1
+  </select>
+  <select id="getMinTicketPrice" resultMap="SKUMap" parameterType="int">
+    select price from skuinfo where ticketfk=#{0} order by price asc limit 0,1
+  </select>
+  <select id="gettheaterInfo" parameterType="int" resultMap="TheaterMap">
+    select theatername from theaterinfo where theaterid=#{0} ;
+  </select>
+</mapper>

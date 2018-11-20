@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://47.93.30.178:6001/eureka/  #注册中心地址
+      defaultZone: http://39.105.144.187:6001/eureka/  #注册中心地址
 spring:
   application:
     name: pwol-search-provider #本服务名字
@@ -21,7 +21,7 @@ spring:
         #最小空闲
         min-idle: 0
   datasource:
-    url: jdbc:mysql://localhost:3306/db
+    url: jdbc:mysql://localhost:3306/pwol
     username: root
     password: Zxc123..
      # 使用druid数据源
