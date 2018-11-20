@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pwol.pwolshowproducer.mapping.SupportInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.pwol.pwolshowproducer.pojo.SupportInfo" >
+    <id column="supportid" property="supportid" jdbcType="INTEGER" />
+    <result column="chooseseat" property="chooseseat" jdbcType="INTEGER" />
+    <result column="superticket" property="superticket" jdbcType="INTEGER" />
+    <result column="elecwallet" property="elecwallet" jdbcType="INTEGER" />
+    <result column="electicket" property="electicket" jdbcType="INTEGER" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="delivery" property="delivery" jdbcType="INTEGER" />
+    <result column="pickup" property="pickup" jdbcType="INTEGER" />
+  </resultMap>
+
+</mapper>

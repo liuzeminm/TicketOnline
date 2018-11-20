@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pwol.pwolshowproducer.mapping.BannerInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.pwol.pwolshowproducer.pojo.BannerInfo" >
+    <id column="bannerid" property="bannerid" jdbcType="INTEGER" />
+    <result column="bannerurl" property="bannerurl" jdbcType="VARCHAR" />
+    <result column="ticketfk" property="ticketfk" jdbcType="INTEGER" />
+    <result column="bannertype" property="bannertype" jdbcType="VARCHAR" />
+    <result column="bannercity" property="bannercity" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="getBanner" resultMap="BaseResultMap">
+    select bannertype,bannerurl from bannerinfo where bannercity='全国' limit 0,8
+  </select>
+  <select id="getBannerByCity" parameterType="String" resultMap="BaseResultMap">
+    select ticketfk,bannerurl from bannerinfo where bannercity=#{0} limit 0,8
+  </select>
+  <select id="getSportsBanner" resultMap="BaseResultMap">
+    select ticketfk,bannerurl from bannerinfo where bannertype='体育' limit 0,8
+  </select>
+</mapper>

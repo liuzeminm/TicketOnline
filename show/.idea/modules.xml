@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/pwol-show-comsumer/pwol-show-comsumer.iml" filepath="$PROJECT_DIR$/pwol-show-comsumer/pwol-show-comsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pwol-show-producer/pwol-show-producer.iml" filepath="$PROJECT_DIR$/pwol-show-producer/pwol-show-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/show.iml" filepath="$PROJECT_DIR$/.idea/show.iml" />
+    </modules>
+  </component>
+</project>

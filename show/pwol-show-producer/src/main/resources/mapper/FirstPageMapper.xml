@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pwol.pwolshowproducer.mapping.FirstPageMapper" >
+  <resultMap id="TicketInfoMap" type="cn.pwol.pwolshowproducer.pojo.TicketInfo" >
+    <id column="ticketid" property="ticketid" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="subcategory" property="subcategory" jdbcType="VARCHAR" />
+    <result column="showplace" property="showplace" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="picurl" property="picurl" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="zan" property="zan" jdbcType="INTEGER" />
+    <result column="supportfk" property="supportfk" jdbcType="INTEGER" />
+    <result column="theaterfk" property="theaterfk" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="SKUMap" type="cn.pwol.pwolshowproducer.pojo.SKUInfo" >
+    <id column="skuid" property="skuid" jdbcType="INTEGER" />
+    <result column="showdate" property="showdate" jdbcType="TIMESTAMP" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="ticketfk" property="ticketfk" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="TheaterMap" type="cn.pwol.pwolshowproducer.pojo.TheaterInfo" >
+    <id column="theaterid" property="theaterid" jdbcType="INTEGER" />
+    <result column="theatername" property="theatername" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="getTicketInfo" resultMap="TicketInfoMap">
+    select ticketid,title,picurl from ticketinfo where category=#{0} and city=#{1} limit 0,1;
+  </select>
+  <select id="getMaxTicketPrice" resultMap="SKUMap" parameterType="int">
+    select price from skuinfo where ticketfk=#{0} order by price desc limit 0,1
+  </select>
+  <select id="getMinTicketPrice" resultMap="SKUMap" parameterType="int">
+    select price from skuinfo where ticketfk=#{0} order by price asc limit 0,1
+  </select>
+  <select id="getTicketInfoByNation" resultMap="TicketInfoMap" parameterType="String">
+    select ticketid,title,picurl from ticketinfo where category=#{0} order by ticketid desc limit 0,1;
+  </select>
+  <select id="getTheaterInfo" parameterType="int" resultMap="TheaterMap">
+    select theaterid,theatername from theaterinfo where theaterid=#{0}
+  </select>
+  <select id="getTheaterticketfk" parameterType="int" resultMap="TicketInfoMap">
+    select theaterfk from ticketinfo where ticketid=#{0} ;
+  </select>
+</mapper>

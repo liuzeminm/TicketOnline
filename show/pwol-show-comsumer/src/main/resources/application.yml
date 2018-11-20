@@ -1,0 +1,20 @@
+server:
+  port: 8004
+spring:
+  thymeleaf:
+    cache: false
+  application:
+    name: pwol-search-consumer
+eureka:
+  instance:
+    instance-id: search   #自定义服务名称信息
+    prefer-ip-address: true     #访问路径可以显示IP地址
+  client:
+    service-url:
+      defaultZone: http://47.93.30.178:6001/eureka/
+feign:
+  hystrix:
+    enabled: true
+cloud-producer:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

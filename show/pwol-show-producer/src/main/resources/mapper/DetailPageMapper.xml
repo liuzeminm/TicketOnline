@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pwol.pwolshowproducer.mapping.DetailPageMapper" >
+  <resultMap id="TicketInfoMap" type="cn.pwol.pwolshowproducer.pojo.TicketInfo" >
+    <id column="ticketid" property="ticketid" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="subcategory" property="subcategory" jdbcType="VARCHAR" />
+    <result column="showplace" property="showplace" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="picurl" property="picurl" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="zan" property="zan" jdbcType="INTEGER" />
+    <result column="supportfk" property="supportfk" jdbcType="INTEGER" />
+    <result column="theaterfk" property="theaterfk" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="SKUMap" type="cn.pwol.pwolshowproducer.pojo.SKUInfo" >
+    <id column="skuid" property="skuid" jdbcType="INTEGER" />
+    <result column="showdate" property="showdate" jdbcType="TIMESTAMP" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="ticketfk" property="ticketfk" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="SupportMap" type="cn.pwol.pwolshowproducer.pojo.SupportInfo" >
+    <id column="supportid" property="supportid" jdbcType="INTEGER" />
+    <result column="chooseseat" property="chooseseat" jdbcType="INTEGER" />
+    <result column="superticket" property="superticket" jdbcType="INTEGER" />
+    <result column="elecwallet" property="elecwallet" jdbcType="INTEGER" />
+    <result column="electicket" property="electicket" jdbcType="INTEGER" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="delivery" property="delivery" jdbcType="INTEGER" />
+    <result column="pickup" property="pickup" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="getSKUInfo" parameterType="int" resultMap="SKUMap">
+    select skuid,showdate,price from skuinfo where ticketfk=#{0} 
+  </select>
+  <select id="getTicketInfoByID" parameterType="int" resultMap="TicketInfoMap">
+    select ticketid,city,theaterfk,title,picurl,ticketstatus,description,zan,supportfk from ticketinfo where ticketid=#{0}
+  </select>
+  <select id="getSupprotInfoByID" parameterType="int" resultMap="SupportMap">
+    select supportid,chooseseat,superticket,elecwallet,electicket,integral,delivery,pickup from supportinfo where supportid=#{0}
+  </select>
+</mapper>

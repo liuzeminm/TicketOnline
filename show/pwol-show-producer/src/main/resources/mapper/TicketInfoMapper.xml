@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pwol.pwolshowproducer.mapping.TicketInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.pwol.pwolshowproducer.pojo.TicketInfo" >
+    <id column="ticketid" property="ticketid" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="subcategory" property="subcategory" jdbcType="VARCHAR" />
+    <result column="showplace" property="showplace" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="picurl" property="picurl" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="zan" property="zan" jdbcType="INTEGER" />
+    <result column="skufk" property="skufk" jdbcType="INTEGER" />
+    <result column="supportfk" property="supportfk" jdbcType="INTEGER" />
+    <result column="theaterfk" property="theaterfk" jdbcType="INTEGER" />
+  </resultMap>
+
+</mapper>
