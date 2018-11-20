@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * 调取票务信息
+ * 订单库存锁定
  */
 @FeignClient(value = "",fallback = ServerBackFactory.class)
-public interface GetTicketInfoService {
+public interface LockonTicketInventoryService {
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public String getticketinfo();
+    public String lockonticketinventory(String seatinfo);
 }

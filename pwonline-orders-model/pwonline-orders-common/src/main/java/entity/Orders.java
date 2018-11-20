@@ -47,9 +47,11 @@ public class Orders implements Serializable {
     private Date orderDelreciveTime;
     //订单退货时间
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    private Date orderGoodsretureTime;
-    //空白列
-    private String blankA;
+    private Date orderGoodsreturnTime;
+    //订单退款时间
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Date orderRefundTime;
+
     //空白列
     private String blankB;
     //空白列
@@ -168,20 +170,20 @@ public class Orders implements Serializable {
         this.orderDelreciveTime = orderDelreciveTime;
     }
 
-    public Date getOrderGoodsretureTime() {
-        return orderGoodsretureTime;
+    public Date getOrderGoodsreturnTime() {
+        return orderGoodsreturnTime;
     }
 
-    public void setOrderGoodsretureTime(Date orderGoodsretureTime) {
-        this.orderGoodsretureTime = orderGoodsretureTime;
+    public void setOrderGoodsreturnTime(Date orderGoodsreturnTime) {
+        this.orderGoodsreturnTime = orderGoodsreturnTime;
     }
 
-    public String getBlankA() {
-        return blankA;
+    public Date getOrderRefundTime() {
+        return orderRefundTime;
     }
 
-    public void setBlankA(String blankA) {
-        this.blankA = blankA;
+    public void setOrderRefundTime(Date orderRefundTime) {
+        this.orderRefundTime = orderRefundTime;
     }
 
     public String getBlankB() {

@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * 调取票务信息
+ * 新增用户地址信息
  */
 @FeignClient(value = "",fallback = ServerBackFactory.class)
-public interface GetTicketInfoService {
+public interface AddPerAddressService {
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public String getticketinfo();
+    public String addperaddress(String addressinfo);
 }

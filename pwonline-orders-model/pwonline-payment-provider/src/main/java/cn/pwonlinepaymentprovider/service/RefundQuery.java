@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 public class RefundQuery {
     @Resource
     private RabbitSender rabbitSender;
-    public void refundQuery(String WIDRQout_trade_no,String WIDRQtrade_no,String WIDRQout_request_no){
+    public String refundQuery(String WIDRQout_trade_no,String WIDRQtrade_no,String WIDRQout_request_no){
         //获得初始化的AlipayClient
         AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
 
@@ -45,6 +45,6 @@ public class RefundQuery {
         } catch (AlipayApiException e) {
             e.printStackTrace();
         }
-
+        return result;
     }
 }
