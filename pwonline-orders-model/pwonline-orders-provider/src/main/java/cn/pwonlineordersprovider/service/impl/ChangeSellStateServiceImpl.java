@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static enu.SellState.*;
 
+/**
+ *
+ * 修改商家状态
+ */
 @Service
 public class ChangeSellStateServiceImpl implements ChangeSellStateService {
     @Autowired
@@ -20,20 +24,31 @@ public class ChangeSellStateServiceImpl implements ChangeSellStateService {
         int changesellstatedao = changeSellStateDao.changesellstatedao(orderid, sellids);
         String result = null;
         if (changesellstatedao == 1){
-            if (sellids == SELL_NO_OUTGO.getSellstateid()){
-                result = "商家状态:" + SELL_NO_OUTGO.getSellstatetype();
-            }else if (sellids == SELL_DONE_OUTGO.getSellstateid()){
-                result = "商家状态:" + SELL_DONE_OUTGO.getSellstatetype();
-            }else if (sellids == SELL_NO_REFUND.getSellstateid()){
-                result = "商家状态:" + SELL_NO_REFUND.getSellstatetype();
-            }else if (sellids == SELL_DONE_RERUND.getSellstateid()){
-                result = "商家状态:" + SELL_DONE_RERUND.getSellstatetype();
-            }else if (sellids == SELL_NO_RECIVE.getSellstateid()){
-                result = "商家状态:" + SELL_NO_RECIVE.getSellstatetype();
-            }else if (sellids == SELL_DONE_RECIVE.getSellstateid()){
-                result = "商家状态:" + SELL_DONE_RECIVE.getSellstatetype();
-            }else {
-                result =  "商家状态异常!";
+            switch (sellids){
+                case 1:
+                    result = "商家状态:" + SELL_NONE.getSellstatetype();
+                    break;
+                case 2:
+                    result = "商家状态:" + SELL_NO_OUTGO.getSellstatetype();
+                    break;
+                case 3:
+                    result = "商家状态:" + SELL_DONE_OUTGO.getSellstatetype();
+                    break;
+                case 4:
+                    result = "商家状态:" + SELL_NO_REFUND.getSellstatetype();
+                    break;
+                case 5:
+                    result = "商家状态:" + SELL_DONE_RERUND.getSellstatetype();
+                    break;
+                case 6:
+                    result = "商家状态:" + SELL_NO_RECIVE.getSellstatetype();
+                    break;
+                case 7:
+                    result = "商家状态:" + SELL_DONE_RECIVE.getSellstatetype();
+                    break;
+                default:
+                    result = "商家状态修改异常！";
+                    break;
             }
         }else {
             result = "商家状态修改失败！";

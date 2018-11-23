@@ -2,6 +2,7 @@ package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.OrdersDao;
 import cn.pwonlineordersprovider.service.ChangeOrdersStatusService;
+import cn.pwonlineordersprovider.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,40 +15,39 @@ import static enu.OrderState.*;
 public class ChangeOrdersStatusServiceImpl implements ChangeOrdersStatusService {
     @Autowired
     private OrdersDao changeOrdersStatusDao;
+    @Autowired
+    private RedisUtil redisUtil;
     @Override
     public String changeordersstaus(int orderstateid, String order_id){
         String result = null;
         int changeordersstatusdao = changeOrdersStatusDao.changeordersstatusdao(orderstateid, order_id);
-        if (changeordersstatusdao == 1){
-            if (orderstateid == OR_CANCLE.getOrderstateid()){
-                // 订单已取消
+        switch (orderstateid){
+            case 2:
                 result = "订单状态为:"+ OR_CANCLE.getOrderstatetype();
-            }else if (orderstateid == OR_NO_OUTGO.getOrderstateid()){
-                // 订单待出货
+                break;
+            case 3:
                 result = "订单状态为:"+ OR_NO_OUTGO.getOrderstatetype();
-            }else if (orderstateid == OR_NO_RECIVE.getOrderstateid()){
-                // 订单待收货
+                break;
+            case 4:
                 result = "订单状态为:"+ OR_NO_RECIVE.getOrderstatetype();
-            }else if (orderstateid == OR_DONE_RECIVE.getOrderstateid()){
-                // 订单已收货
+                break;
+            case 5:
                 result = "订单状态为:"+ OR_DONE_RECIVE.getOrderstatetype();
-            }else if (orderstateid == OR_NO_REFUND.getOrderstateid()){
-                // 订单待退款
+                break;
+            case 6:
                 result = "订单状态为:"+ OR_NO_REFUND.getOrderstatetype();
-            }else if (orderstateid == OR_DONE_REFUND.getOrderstateid()){
-                // 订单已退款
+                break;
+            case 7:
                 result = "订单状态为:"+ OR_DONE_REFUND.getOrderstatetype();
-            }else if (orderstateid == OR_NO_RETURN_GOODS.getOrderstateid()){
-                // 订单待退货
+                break;
+            case 8:
                 result = "订单状态为:"+ OR_NO_RETURN_GOODS.getOrderstatetype();
-            }else if (orderstateid == OR_DONE_RETURN_GOODS.getOrderstateid()){
-                // 订单已退货
+                break;
+            case 9:
                 result = "订单状态为:"+ OR_DONE_RETURN_GOODS.getOrderstatetype();
-            }else if (orderstateid > 9 || orderstateid <= 1){
-                result = "订单状态修改失败";
-            }
-        }else {
-            result = "订单修改失败！";
+                break;
+            default:
+                result = "订单状态修改失败！";
         }
         return result;
     }

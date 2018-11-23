@@ -15,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 创建订单逻辑实现类
@@ -80,12 +78,19 @@ public class CreateOrdersServiceImpl implements CreateOrdersService {
                 // 订单创建时间
                 orders1.setOrderCreateTime(currentTimeService.dateprovideDate());
                 redisUtil.set(orders1.getOrderId(), JSON.toJSON(orders1));
+                // 订单失效时间15分钟
                 redisUtil.expire(orders1.getOrderId(), 1000 * 60 * 15);
                 System.out.println(redisUtil.get(orders1.getOrderId()));
                 // 当前sessionid
-                String s = httpsessionid;
-                redisUtil.set("sessionid",s);
+               /* String s = httpsessionid;
+                redisUtil.set("sessionid",s);*/
                 // 持久化到数据库
+                int addorders = ordersDao.addorders(orders1);
+                if (addorders ==  1){
+                    result = "订单创建成功！";
+                }else {
+                    result = "订单创建失败！";
+                }
                 // 订单超时 修改订单状态为2，已取消
                 if (redisUtil.get(orders1.getOrderId()).equals(null)){
                     String changeordersstaus = changeOrdersStatusService.changeordersstaus(2, orders1.getOrderId());
