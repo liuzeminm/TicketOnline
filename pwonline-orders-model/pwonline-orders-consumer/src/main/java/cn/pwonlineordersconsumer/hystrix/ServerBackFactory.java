@@ -1,13 +1,20 @@
+/*
 package cn.pwonlineordersconsumer.hystrix;
 
-import cn.pwonlineordersconsumer.service.*;
+import cn.pwonlineordersconsumer.feigin.person.*;
+import cn.pwonlineordersconsumer.feigin.ticket.GetTicketInfoService;
+import cn.pwonlineordersconsumer.feigin.ticket.GetTicketInventoryService;
+import cn.pwonlineordersconsumer.feigin.ticket.LockoffTicketInventoryService;
+import cn.pwonlineordersconsumer.feigin.ticket.LockonTicketInventoryService;
 import org.springframework.stereotype.Component;
 
+*/
 /**
  * 熔断
- */
+ *//*
+
 @Component
-public class ServerBackFactory implements AddBuyerInfoService, AddPerAddressService, LockonTicketInventoryService , DelBuyerInfoService, LockoffTicketInventoryService, GetPerInfoService, GetPeronalIdService, GetTicketInfoService, GetTicketInventoryService, UpdatePerAddressService {
+public class ServerBackFactory implements AddBuyerInfoService, AddPerAddressService, LockonTicketInventoryService, DelBuyerInfoService, LockoffTicketInventoryService, GetPerInfoService, GetPeronalIdService, GetTicketInfoService, GetTicketInventoryService, UpdatePerAddressService {
     // 添加购票人信息
     @Override
     public String addbuyerinfo(String buyerinfo) {
@@ -59,3 +66,4 @@ public class ServerBackFactory implements AddBuyerInfoService, AddPerAddressServ
         return "Hystrix:获取用户地址异常！";
     }
 }
+*/

@@ -1,6 +1,6 @@
 package cn.pwonlineordersconsumer.hystrix;
 
-import cn.pwonlineordersconsumer.service.Testmq;
+import cn.pwonlineordersconsumer.feigin.Testmq;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -4,7 +4,6 @@ package cn.pwonlineordersprovider.dao;
 import entity.Orders;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,6 +17,7 @@ import static sql.SqlCommons.SQL_COMMON;
  * @since 2018-11-03 14:22:38
  */
 @Repository
+@Mapper
 public interface OrdersDao {
     // 个人详情页订单列表
     List<Orders> getAll(@Param("personal_id") String personal_id);
@@ -26,7 +26,7 @@ public interface OrdersDao {
     Orders getOne(@Param("order_id") String order_id);
 
     // 新建订单
-    int addorders(@Param("o") Orders orders);
+    int addorders(@Param("o") Orders o);
 
     // 订单取消
     int cancleordersdao(@Param("orderid") String orderid);

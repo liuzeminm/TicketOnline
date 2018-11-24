@@ -1,14 +1,17 @@
+/*
 package cn.pwonlineordersconsumer.controller;
 
-import cn.pwonlineordersconsumer.service.*;
+import cn.pwonlineordersconsumer.feigin.person.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+*/
 /**
  * 与个人信息相关
- */
+ *//*
+
 @RestController
 @RequestMapping(value = "perinfocontroller",method = RequestMethod.POST)
 public class PerInfoController {
@@ -55,3 +58,4 @@ public class PerInfoController {
         return updatePerAddressService.updateperaddress(addressinfo);
     }
 }
+*/

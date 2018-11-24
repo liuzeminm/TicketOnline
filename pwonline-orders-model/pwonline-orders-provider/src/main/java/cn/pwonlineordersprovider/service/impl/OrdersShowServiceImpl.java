@@ -2,12 +2,13 @@ package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.OrderStatusDao;
 import cn.pwonlineordersprovider.dao.OrdersDao;
-import cn.pwonlineordersprovider.service.OrdersShowService;
-import cn.pwonlineordersprovider.vo.OrdersTransfer;
+import vo.OrdersTransfer;
 import cn.pwonlineordersprovider.util.RedisUtil;
 import entity.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.List;
 /**
  * 订单列表展示
  */
-@Service
-public class OrdersShowServiceImpl implements OrdersShowService {
+@RestController
+public class OrdersShowServiceImpl {
     // 获取订单信息
     @Autowired
     private OrdersDao ordersDao;
@@ -29,7 +30,7 @@ public class OrdersShowServiceImpl implements OrdersShowService {
 
     // redis缓存
     private RedisUtil redisUtil;
-    @Override
+    @RequestMapping(value = "getordersshow",method = RequestMethod.POST)
     public List<OrdersTransfer> getordersshowservice(String personal_id) {
         List<Orders> getall = ordersDao.getAll(personal_id);
         OrdersTransfer ordersTransfer = new OrdersTransfer();

@@ -1,21 +1,22 @@
 package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.OrdersDao;
-import cn.pwonlineordersprovider.service.OrderDetailsShowService;
-import cn.pwonlineordersprovider.vo.OrderDetailsInfo;
-import cn.pwonlineordersprovider.vo.OrdersTransfer;
+import vo.OrderDetailsInfo;
+import vo.OrdersTransfer;
 import cn.pwonlineordersprovider.util.RedisUtil;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Service
-public class OrderDetailsShowServiceImpl implements OrderDetailsShowService {
+@RestController
+public class OrderDetailsShowServiceImpl {
     @Autowired
     private OrdersDao ordersDao;
     @Autowired
     private RedisUtil redisUtil;
-    @Override
+    @RequestMapping(value = "orderdetailshow",method = RequestMethod.POST)
     public String orderdetailsshowservice(String orderid) {
         OrdersTransfer o = (OrdersTransfer) redisUtil.get(orderid);
         OrderDetailsInfo orderDetailsInfo = new OrderDetailsInfo();

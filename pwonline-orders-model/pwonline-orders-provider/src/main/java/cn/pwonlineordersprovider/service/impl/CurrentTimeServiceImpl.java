@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-@Service
+@RestController
 public class CurrentTimeServiceImpl implements CurrentTimeService {
-    @RequestMapping(value = "dateProvide", method = RequestMethod.GET)
-    @Override
+    @RequestMapping(value = "StringdateProvide", method = RequestMethod.GET)
     public String dateprovideString() {
         //设置日期格式String
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         return df.format(new Date());
     }
-    @Override
+    @RequestMapping(value = "DateProvide",method = RequestMethod.GET)
     public Date dateprovideDate() throws ParseException {
         //设置日期格式Date
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

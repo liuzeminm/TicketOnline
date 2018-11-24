@@ -1,16 +1,17 @@
 package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.SearchInventoryDao;
-import cn.pwonlineordersprovider.service.GetTicketInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Service
-public class GetTicketInventoryServiceImpl implements GetTicketInventoryService {
+@RestController
+public class GetTicketInventoryServiceImpl{
     @Autowired
     private SearchInventoryDao searchInventoryDao;
-
-    @Override
+    @RequestMapping(value = "getticketinventory",method = RequestMethod.POST)
     public String getticketInventory(String ticketinfo, String ticketseat) {
         Object ticketInfo = searchInventoryDao.getTicketInfo(ticketseat);
         // 判断订单状态

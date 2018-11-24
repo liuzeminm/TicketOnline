@@ -1,24 +1,24 @@
 package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.OrdersDao;
-import cn.pwonlineordersprovider.service.ChangeOrdersStatusService;
 import cn.pwonlineordersprovider.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import static enu.OrderState.*;
 
-@Service
-public class ChangeOrdersStatusServiceImpl implements ChangeOrdersStatusService {
+@RestController
+public class ChangeOrdersStatusServiceImpl {
     @Autowired
     private OrdersDao changeOrdersStatusDao;
     @Autowired
     private RedisUtil redisUtil;
-    @Override
-    public String changeordersstaus(int orderstateid, String order_id){
+    @RequestMapping(value = "changeordersstaus",method = RequestMethod.PUT)
+    public String changeordersstaus(@RequestParam("orderstateid") int orderstateid, @RequestParam("order_id") String order_id){
         String result = null;
         int changeordersstatusdao = changeOrdersStatusDao.changeordersstatusdao(orderstateid, order_id);
         switch (orderstateid){
@@ -49,6 +49,7 @@ public class ChangeOrdersStatusServiceImpl implements ChangeOrdersStatusService 
             default:
                 result = "订单状态修改失败！";
         }
+        System.out.println(result);
         return result;
     }
 }

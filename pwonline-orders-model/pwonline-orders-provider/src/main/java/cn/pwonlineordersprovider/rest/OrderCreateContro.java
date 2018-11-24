@@ -1,6 +1,6 @@
 package cn.pwonlineordersprovider.rest;
 
-import cn.pwonlineordersprovider.vo.Order_Vo;
+import vo.Order_Vo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

@@ -9,6 +9,26 @@ spring:
 #  sleuth:
 #    sampler:
 #      percentage: 1.0
+  datasource:
+      url: jdbc:mysql://localhost:3306/orders
+      username: ppp
+      password: ppp
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+      name: orders
   mvc:
     view:
       prefix: /templates/
@@ -33,7 +53,7 @@ eureka:
       defaultZone: http://localhost:8080/eureka/
 feign:
   hystrix:
-    enabled: true
+    enabled: false
 
 demo-usr-provider:
   ribbon:

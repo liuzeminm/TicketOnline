@@ -1,7 +1,7 @@
 package cn.pwonlineordersconsumer.controller;
 
 import cn.pwonlineordersconsumer.recive.Recivers;
-import cn.pwonlineordersconsumer.service.Testmq;
+import cn.pwonlineordersconsumer.feigin.Testmq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

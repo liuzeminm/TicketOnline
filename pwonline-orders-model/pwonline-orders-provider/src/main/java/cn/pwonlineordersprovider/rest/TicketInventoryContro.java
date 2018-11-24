@@ -1,7 +1,7 @@
 /*
 package cn.pwonlineordersprovider.rest;
 
-import cn.pwonlineordersprovider.service.GetTicketInventory;
+import cn.pwonlineordersprovider.feigin.GetTicketInventory;
 import com.alibaba.fastjson.JSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

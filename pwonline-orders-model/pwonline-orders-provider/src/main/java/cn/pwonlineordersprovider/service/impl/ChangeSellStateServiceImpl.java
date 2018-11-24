@@ -1,7 +1,6 @@
 package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.OrdersDao;
-import cn.pwonlineordersprovider.service.ChangeSellStateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +13,11 @@ import static enu.SellState.*;
  *
  * 修改商家状态
  */
-@Service
-public class ChangeSellStateServiceImpl implements ChangeSellStateService {
+@RestController
+public class ChangeSellStateServiceImpl {
     @Autowired
     private OrdersDao changeSellStateDao;
-    @Override
+    @RequestMapping(value = "changesellstatus",method = RequestMethod.PUT)
     public String changesellstateservice(String orderid,String sellid){
         int sellids = Integer.parseInt(sellid);
         int changesellstatedao = changeSellStateDao.changesellstatedao(orderid, sellids);
@@ -53,6 +52,7 @@ public class ChangeSellStateServiceImpl implements ChangeSellStateService {
         }else {
             result = "商家状态修改失败！";
         }
+        System.out.println(result);
         return  result;
     }
 }

@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Orders implements Serializable {
     //订单序列号
-    private Integer id;
+    private Integer id = 0;
     //订单编号
     private String orderId;
     //订单消费者编号

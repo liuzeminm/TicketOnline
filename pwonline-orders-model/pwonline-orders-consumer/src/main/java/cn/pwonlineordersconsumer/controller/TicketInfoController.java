@@ -1,17 +1,20 @@
+/*
 package cn.pwonlineordersconsumer.controller;
 
-import cn.pwonlineordersconsumer.service.GetTicketInfoService;
-import cn.pwonlineordersconsumer.service.GetTicketInventoryService;
-import cn.pwonlineordersconsumer.service.LockoffTicketInventoryService;
-import cn.pwonlineordersconsumer.service.LockonTicketInventoryService;
+import cn.pwonlineordersconsumer.feigin.ticket.GetTicketInfoService;
+import cn.pwonlineordersconsumer.feigin.ticket.GetTicketInventoryService;
+import cn.pwonlineordersconsumer.feigin.ticket.LockoffTicketInventoryService;
+import cn.pwonlineordersconsumer.feigin.ticket.LockonTicketInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+*/
 /**
  * 票务信息相关
- */
+ *//*
+
 @RestController()
 @RequestMapping(value = "ticketinfo",method = RequestMethod.POST)
 public class TicketInfoController {
@@ -44,3 +47,4 @@ public class TicketInfoController {
         return getTicketInfoService.getticketinfo();
     }
 }
+*/

@@ -91,21 +91,21 @@
         </trim>
     </sql>
     <!--个人详情页订单列表-->
-    <select id="getAll" resultMap="entity.Orders" parameterType="java.lang.String" >
+    <select id="getAll" resultType="entity.Orders" parameterType="java.lang.String" >
         select
         <include refid="Orders_Commons"/>
         from orders where
         order_personal_id=#{personal_id}
     </select>
     <!--订单具体详情表-->
-    <select id="getOne" resultMap="entity.Orders" parameterType="java.lang.String" >
+    <select id="getOne" resultType="entity.Orders" parameterType="java.lang.String" >
         select
         <include refid="Orders_Commons" />
         from orders where
         order_id=#{order_id}
     </select>
     <!--创建订单-->
-    <insert id="addorders" parameterType="entity.Orders" >
+    <insert id="addorders"  >
     insert into orders
         <include refid="Orders_Common"/>
     </insert>
