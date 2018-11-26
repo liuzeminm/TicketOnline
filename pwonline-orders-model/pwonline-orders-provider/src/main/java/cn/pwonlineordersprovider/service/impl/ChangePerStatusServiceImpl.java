@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import static enu.PersonalState.*;
@@ -14,7 +15,7 @@ public class ChangePerStatusServiceImpl {
     @Autowired
     private OrdersDao changePerStatusDao;
     @RequestMapping(value = "changeperstatus",method = RequestMethod.PUT)
-    public String changepersstatusservice(String orderid,int perstatusid){
+    public String changepersstatusservice(@RequestParam("orderid") String orderid,@RequestParam("perstatusid") int perstatusid){
         int i = changePerStatusDao.changePerStatusdao(orderid, perstatusid);
         String result = null;
         if (i == 1){

@@ -3,6 +3,7 @@ package cn.pwonlineordersconsumer.feigin.orders;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 修改商家状态
@@ -10,5 +11,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "pwonline-orders-provider")
 public interface ChangeSellStateService {
     @RequestMapping(value = "changesellstatus",method = RequestMethod.PUT)
-    public String changesellstateservice(String orderid, String sellid);
+    public String changesellstateservice(@RequestParam("orderid")String orderid,@RequestParam("sellid") String sellid);
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import static enu.SellState.*;
@@ -18,7 +19,7 @@ public class ChangeSellStateServiceImpl {
     @Autowired
     private OrdersDao changeSellStateDao;
     @RequestMapping(value = "changesellstatus",method = RequestMethod.PUT)
-    public String changesellstateservice(String orderid,String sellid){
+    public String changesellstateservice(@RequestParam("orderid")String orderid,@RequestParam("sellid") String sellid){
         int sellids = Integer.parseInt(sellid);
         int changesellstatedao = changeSellStateDao.changesellstatedao(orderid, sellids);
         String result = null;

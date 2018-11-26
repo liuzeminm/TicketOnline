@@ -5,7 +5,6 @@ import cn.pwonlineordersconsumer.feigin.OrderIdCreateService;
 import cn.pwonlineordersconsumer.feigin.orders.*;
 import cn.pwonlineordersconsumer.util.RedisUtil;
 import vo.Order_Vo;
-import com.alibaba.fastjson.JSON;
 import entity.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,7 +73,7 @@ public class CreateOrdersServiceImpl implements CreateOrdersService {
                 orders1.setOrderCommotity(order_vo.getCommodity_info());
                 // 订单创建时间
                 orders1.setOrderCreateTime(currentTimeService.dateprovideDate());
-                System.out.println(orders1.getOrderPersonalId());
+                System.out.println(orders1.getOrderId());
                 redisUtil.set(orders1.getOrderId(), orders1);
                 // 订单失效时间15分钟
                 redisUtil.expire(orders1.getOrderId(),60 * 15);

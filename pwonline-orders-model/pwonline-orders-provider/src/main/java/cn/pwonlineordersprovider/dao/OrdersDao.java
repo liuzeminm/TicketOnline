@@ -26,7 +26,7 @@ public interface OrdersDao {
     Orders getOne(@Param("order_id") String order_id);
 
     // 新建订单
-    int addorders(@Param("o") Orders o);
+    int addorders(@Param("order") Orders o);
 
     // 订单取消
     int cancleordersdao(@Param("orderid") String orderid);

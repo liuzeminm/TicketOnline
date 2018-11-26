@@ -105,9 +105,90 @@
         order_id=#{order_id}
     </select>
     <!--创建订单-->
-    <insert id="addorders"  >
+    <insert id="addorders" parameterType="entity.Orders" >
     insert into orders
-        <include refid="Orders_Common"/>
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="order_id != null" >
+                order_id,
+            </if>
+            <if test="order_personal_id != null" >
+                order_personal_id,
+            </if>
+            <if test="order_seller_id != null" >
+                order_seller_id,
+            </if>
+            <if test="order_state_id != null" >
+                order_state_id,
+            </if>
+            <if test="order_personalstate_id != null" >
+                order_personalstate_id,
+            </if>
+            <if test="order_sellstate_id != null" >
+                order_sellstate_id,
+            </if>
+            <if test="order_create_time != null" >
+                order_create_time,
+            </if>
+            <if test="order_commotity != null" >
+                order_commotity,
+            </if>
+            <if test="order_delivery_id != null" >
+                order_delivery_id,
+            </if>
+            <if test="order_finish_time != null" >
+                order_finish_time,
+            </if>
+            <if test="order_charge_time != null" >
+                order_charge_time,
+            </if>
+            <if test="order_delstart_time != null" >
+                order_delstart_time,
+            </if>
+            <if test="order_delrecive_time != null" >
+                order_delrecive_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="order_id != null" >
+                #{order.orderId},
+            </if>
+            <if test="order_personal_id != null" >
+                #{order.orderPersonalId},
+            </if>
+            <if test="order_seller_id != null" >
+                #{order.orderSellerId},
+            </if>
+            <if test="order_state_id != null" >
+                #{order.orderStateId},
+            </if>
+            <if test="order_personalstate_id != null" >
+                #{order.orderPersonalstateId},
+            </if>
+            <if test="order_sellstate_id != null" >
+                #{o.orderSellstateId},
+            </if>
+            <if test="order_create_time != null" >
+                #{order.orderCreateTime},
+            </if>
+            <if test="order_commotity != null" >
+                #{o.orderCommotity},
+            </if>
+            <if test="order_delivery_id != null" >
+                #{order.orderDeliveryId},
+            </if>
+            <if test="order_finish_time != null" >
+                #{order.orderFinishTime},
+            </if>
+            <if test="order_charge_time != null" >
+                #{order.orderChargeTime},
+            </if>
+            <if test="order_delstart_time != null" >
+                #{order.orderDelstartTime},
+            </if>
+            <if test="order_delrecive_time != null" >
+                #{order.orderDelreciveTime},
+            </if>
+        </trim>
     </insert>
     <!--订单交易取消-->
     <update id="cancleordersdao" parameterType="java.lang.String" >
