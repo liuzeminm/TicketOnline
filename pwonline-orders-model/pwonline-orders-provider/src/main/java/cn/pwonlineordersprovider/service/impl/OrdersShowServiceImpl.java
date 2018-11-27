@@ -2,6 +2,7 @@ package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.OrderStatusDao;
 import cn.pwonlineordersprovider.dao.OrdersDao;
+import com.alibaba.fastjson.JSON;
 import vo.OrdersTransfer;
 import cn.pwonlineordersprovider.util.RedisUtil;
 import entity.Orders;
@@ -30,10 +31,10 @@ public class OrdersShowServiceImpl {
 
     // redis缓存
     private RedisUtil redisUtil;
-    @RequestMapping(value = "getordersshow",method = RequestMethod.POST)
-    public List<OrdersTransfer> getordersshowservice(String personal_id) {
+    @RequestMapping(value = "getordersshow",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
+    public String getordersshowservice(String personal_id) {
         List<Orders> getall = ordersDao.getAll(personal_id);
-        OrdersTransfer ordersTransfer = new OrdersTransfer();
+        /*OrdersTransfer ordersTransfer = new OrdersTransfer();
         List<OrdersTransfer> getallorders = new ArrayList<OrdersTransfer>();
         for (Orders o:getall) {
             ordersTransfer.setOrder_id(o.getOrderId());
@@ -45,8 +46,11 @@ public class OrdersShowServiceImpl {
             // 订单状态
             ordersTransfer.setOrder_state(orderStatusDao.getorderstate(o.getOrderStateId()).getStateType());
             getallorders.add(ordersTransfer);
+            // 订单列表缓存到redis为具体订单详情提供快速访问的功能
             redisUtil.set(o.getOrderId(),ordersTransfer);
-        }
-        return getallorders;
+            // 有效时间15分钟
+            redisUtil.expire(o.getOrderId(),60*15);
+        }*/
+        return JSON.toJSONString(getall);
     }
 }

@@ -1,6 +1,7 @@
 package cn.pwonlineordersprovider.service.impl;
 
 import cn.pwonlineordersprovider.dao.OrdersDao;
+import entity.Orders;
 import vo.OrderDetailsInfo;
 import vo.OrdersTransfer;
 import cn.pwonlineordersprovider.util.RedisUtil;
@@ -16,22 +17,28 @@ public class OrderDetailsShowServiceImpl {
     private OrdersDao ordersDao;
     @Autowired
     private RedisUtil redisUtil;
-    @RequestMapping(value = "orderdetailshow",method = RequestMethod.POST)
+    @RequestMapping(value = "orderdetailshow",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
     public String orderdetailsshowservice(String orderid) {
-        OrdersTransfer o = (OrdersTransfer) redisUtil.get(orderid);
-        OrderDetailsInfo orderDetailsInfo = new OrderDetailsInfo();
-        orderDetailsInfo.setOrder_id(orderid);
-        orderDetailsInfo.setOrder_state(o.getOrder_state());
-        orderDetailsInfo.setOrder_money(o.getOrder_money());
-        orderDetailsInfo.setTickets_info("票务信息");
-        orderDetailsInfo.setSeat_info(o.getSeat_info());
-        orderDetailsInfo.setTicket_single_money("单价");
-        // 票数量
-        orderDetailsInfo.setTickets_num(1);
-        orderDetailsInfo.setDiscounts("优惠");
-        orderDetailsInfo.setDelvery_info("配送信息");
-        orderDetailsInfo.setCreate_time(ordersDao.getOne(orderid).getOrderCreateTime());
+        Orders orders = new Orders();
+        /*if (redisUtil.get(orderid) != null) {
+            OrdersTransfer o = (OrdersTransfer) redisUtil.get(orderid);
+            orderDetailsInfo.setOrder_id(orderid);
+            orderDetailsInfo.setOrder_state(o.getOrder_state());
+            orderDetailsInfo.setOrder_money(o.getOrder_money());
+            orderDetailsInfo.setTickets_info("票务信息");
+            orderDetailsInfo.setSeat_info(o.getSeat_info());
+            orderDetailsInfo.setTicket_single_money("单价");
+            // 票数量
+            orderDetailsInfo.setTickets_num(1);
+            orderDetailsInfo.setDiscounts("优惠");
+            orderDetailsInfo.setDelvery_info("配送信息");
+            orderDetailsInfo.setCreate_time(ordersDao.getOne(orderid).getOrderCreateTime());
+        }else {
+            Orders one = ordersDao.getOne(orderid);
 
-        return JSON.toJSONString(orderDetailsInfo);
+        }*/
+        orders = ordersDao.getOne(orderid);
+        return JSON.toJSONString(orders);
     }
+
 }

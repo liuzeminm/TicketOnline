@@ -192,7 +192,7 @@
     </insert>
     <!--订单交易取消-->
     <update id="cancleordersdao" parameterType="java.lang.String" >
-        update search orders
+        update orders
           set  order_state_id = 2
         where order_id=#{orderid}
     </update>

@@ -12,6 +12,6 @@ import java.util.List;
  */
 @FeignClient(value = "pwonline-orders-provider")
 public interface OrdersShowService {
-    @RequestMapping(value = "getordersshow",method = RequestMethod.POST)
-    List<OrdersTransfer> getordersshowservice(String personal_id);
+    @RequestMapping(value = "getordersshow",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
+    public String getordersshowservice(String personal_id);
 }

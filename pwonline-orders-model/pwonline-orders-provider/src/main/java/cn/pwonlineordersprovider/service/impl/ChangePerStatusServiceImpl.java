@@ -14,7 +14,7 @@ import static enu.PersonalState.*;
 public class ChangePerStatusServiceImpl {
     @Autowired
     private OrdersDao changePerStatusDao;
-    @RequestMapping(value = "changeperstatus",method = RequestMethod.PUT)
+    @RequestMapping(value = "changeperstatus",method = RequestMethod.PUT,produces = "text/plain;charset=UTF-8")
     public String changepersstatusservice(@RequestParam("orderid") String orderid,@RequestParam("perstatusid") int perstatusid){
         int i = changePerStatusDao.changePerStatusdao(orderid, perstatusid);
         String result = null;

@@ -10,14 +10,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 @RestController
+@RequestMapping(value = "dateprovide")
 public class CurrentTimeServiceImpl implements CurrentTimeService {
-    @RequestMapping(value = "StringdateProvide", method = RequestMethod.GET)
+    @RequestMapping(value = "stringdate", method = RequestMethod.GET,produces = "text/plain;charset=UTF-8")
     public String dateprovideString() {
         //设置日期格式String
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         return df.format(new Date());
     }
-    @RequestMapping(value = "DateProvide",method = RequestMethod.GET)
+    @RequestMapping(value = "datedate",method = RequestMethod.GET,produces = "text/plain;charset=UTF-8")
     public Date dateprovideDate() throws ParseException {
         //设置日期格式Date
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

@@ -13,9 +13,9 @@ import java.util.Date;
  */
 @FeignClient(value = "pwonline-orders-provider")
 public interface CurrentTimeService {
-    @RequestMapping(value = "StringdateProvide", method = RequestMethod.GET)
+    @RequestMapping(value = "StringdateProvide", method = RequestMethod.GET,produces = "text/plain;charset=UTF-8")
     public String dateprovideString();
 
-    @RequestMapping(value = "DateProvide",method = RequestMethod.GET)
+    @RequestMapping(value = "DateProvide",method = RequestMethod.GET,produces = "text/plain;charset=UTF-8")
     public Date dateprovideDate();
 }

@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(value = "pwonline-orders-provider")
 public interface ChangeOrdersStatusService {
-    @RequestMapping(value = "changeordersstaus",method = RequestMethod.PUT)
+    @RequestMapping(value = "changeordersstaus",method = RequestMethod.PUT,produces = "text/plain;charset=UTF-8")
     String changeordersstaus(@RequestParam("orderstateid") int orderstateid,@RequestParam("order_id") String order_id);
 }

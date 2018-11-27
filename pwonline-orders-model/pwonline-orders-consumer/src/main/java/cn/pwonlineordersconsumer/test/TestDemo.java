@@ -1,8 +1,6 @@
 package cn.pwonlineordersconsumer.test;
 
 
-import cn.pwonlineordersconsumer.feigin.impl.OrderIdCreateServiceImpl;
-
 public class TestDemo {
     public static void main(String[] args) {
         /*OrderCreateServiceImpl orderCreateService = new OrderCreateServiceImpl();

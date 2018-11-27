@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @FeignClient(value = "pwonline-orders-provider")
 public interface GetTicketInventoryService {
-    @RequestMapping(value = "getticketinventory",method = RequestMethod.POST)
+    @RequestMapping(value = "getticketinventory",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
     String getticketInventory(String ticketinfo, String ticketseat);
 }

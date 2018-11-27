@@ -18,7 +18,7 @@ import static enu.SellState.*;
 public class ChangeSellStateServiceImpl {
     @Autowired
     private OrdersDao changeSellStateDao;
-    @RequestMapping(value = "changesellstatus",method = RequestMethod.PUT)
+    @RequestMapping(value = "changesellstatus",method = RequestMethod.PUT,produces = "text/plain;charset=UTF-8")
     public String changesellstateservice(@RequestParam("orderid")String orderid,@RequestParam("sellid") String sellid){
         int sellids = Integer.parseInt(sellid);
         int changesellstatedao = changeSellStateDao.changesellstatedao(orderid, sellids);

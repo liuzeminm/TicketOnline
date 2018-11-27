@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 /*@FeignClient(value = "",fallback = ServerBackFactory.class)
 public interface UpdatePerAddressService {
-    @RequestMapping(value = "",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
     public String updateperaddress(String addressinfo);
 }*/

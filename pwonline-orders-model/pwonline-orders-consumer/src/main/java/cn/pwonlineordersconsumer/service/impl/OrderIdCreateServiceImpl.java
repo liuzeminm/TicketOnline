@@ -1,10 +1,9 @@
-package cn.pwonlineordersconsumer.feigin.impl;
+package cn.pwonlineordersconsumer.service.impl;
 
-import cn.pwonlineordersconsumer.feigin.OrderIdCreateService;
+import cn.pwonlineordersconsumer.service.OrderIdCreateService;
 import cn.pwonlineordersconsumer.feigin.orders.CurrentTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
 

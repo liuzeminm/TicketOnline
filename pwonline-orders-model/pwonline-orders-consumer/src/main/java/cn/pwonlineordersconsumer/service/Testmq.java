@@ -1,4 +1,4 @@
-package cn.pwonlineordersconsumer.feigin;
+package cn.pwonlineordersconsumer.service;
 
 import cn.pwonlineordersconsumer.hystrix.MQBackService;
 import org.springframework.cloud.netflix.feign.FeignClient;

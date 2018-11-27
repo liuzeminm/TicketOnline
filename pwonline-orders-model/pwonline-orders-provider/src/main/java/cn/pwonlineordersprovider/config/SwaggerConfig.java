@@ -33,7 +33,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("api文档")
+                .title("票务在线系统订单模块api文档")
                 .description("liuzeminm@foxmail.com")
                 //服务条款网址
                 //.termsOfServiceUrl("http://blog.csdn.net/forezp")

@@ -28,7 +28,7 @@ public class CreateOrdersServiceImpl {
     // 创建订单dao层
     @Autowired
     private OrdersDao ordersDao;
-    @RequestMapping(value = "createorder",method = RequestMethod.POST)
+    @RequestMapping(value = "createorder",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
     public String createservice(String httpsessionid,String per_username,Order_Vo order_vo) throws ParseException {
         Orders orders1 = new Orders();
         String result = null;

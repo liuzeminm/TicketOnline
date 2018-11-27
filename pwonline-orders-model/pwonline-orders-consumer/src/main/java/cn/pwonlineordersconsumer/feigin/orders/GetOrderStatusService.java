@@ -4,11 +4,8 @@ import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * 取消订单
- */
 @FeignClient(value = "pwonline-orders-provider")
-public interface CancleOrderService {
-    @RequestMapping(value = "cancleorder",method = RequestMethod.PUT,produces = "text/plain;charset=UTF-8")
-    public String cancleOrdersService(String orderid);
+public interface GetOrderStatusService {
+    @RequestMapping(value = "getOrderStatus",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
+    public String getOrderStatus(String order_id);
 }

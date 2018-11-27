@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CreateOrdersDataServiceImpl {
     @Autowired
     private OrdersDao ordersDao;
-    @RequestMapping(value = "createorders",method = RequestMethod.POST)
+    @RequestMapping(value = "createorders",method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
     public String createorders(Orders orders){
         String result = null;
         if (ordersDao.addorders(orders) == 1){

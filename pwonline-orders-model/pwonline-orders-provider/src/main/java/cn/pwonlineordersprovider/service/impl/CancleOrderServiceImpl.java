@@ -15,14 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class CancleOrderServiceImpl  {
     @Autowired
     private OrdersDao cancleOrdersDao;
-    @RequestMapping(value = "cancleorder",method = RequestMethod.PUT)
+    @RequestMapping(value = "cancleorder",method = RequestMethod.PUT,produces = "text/plain;charset=UTF-8")
     public String cancleOrdersService(String orderid){
-        int cancleordersdao = cancleOrdersDao.cancleordersdao(orderid);
         String result = null;
-        if (cancleordersdao == 1){
-            result = "订单取消成功";
+        if (orderid != null) {
+            int cancleordersdao = cancleOrdersDao.cancleordersdao(orderid);
+
+            if (cancleordersdao == 1) {
+                result = "订单取消成功!";
+            }else {
+                result = "订单取消失败！";
+            }
+            System.out.println("订单取消功能：" + result);
         }
-        System.out.println("订单取消功能：" + result);
         return result;
     }
 }
