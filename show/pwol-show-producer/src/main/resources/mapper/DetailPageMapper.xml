@@ -9,7 +9,7 @@
     <result column="showplace" property="showplace" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="picurl" property="picurl" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="ticketstatus" property="status" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="zan" property="zan" jdbcType="INTEGER" />
     <result column="supportfk" property="supportfk" jdbcType="INTEGER" />

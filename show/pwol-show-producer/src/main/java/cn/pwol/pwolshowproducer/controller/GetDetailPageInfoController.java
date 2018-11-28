@@ -5,10 +5,7 @@ import cn.pwol.pwolshowproducer.service.GetSKUInfoByIDService;
 import cn.pwol.pwolshowproducer.service.GetSupportInfoByIDService;
 import cn.pwol.pwolshowproducer.service.GetTheaterInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GetDetailPageInfoController {
@@ -22,25 +19,25 @@ public class GetDetailPageInfoController {
     private GetTheaterInfoService gtis;
     @ResponseBody
     @RequestMapping(value = "/showDetailPageTicketInfo",method = RequestMethod.POST)
-    public String showDetailPageTicketInfo(int ticketid){
+    public String showDetailPageTicketInfo(@RequestParam("ticketid") int ticketid){
         return gdpti.getDetailPageTicketInfo(ticketid);
     }
 
     @ResponseBody
     @RequestMapping(value = "/showDetailPageSKUInfo",method = RequestMethod.POST)
-    public String ShowDetailPageSKUInfo(int ticketid){
+    public String ShowDetailPageSKUInfo(@RequestParam("ticketid") int ticketid){
         return gsi.getSKUInfoByID(ticketid);
     }
 
     @ResponseBody
     @RequestMapping(value = "/showDetailPageSupportInfo",method = RequestMethod.POST)
-    public String ShowDetailPageSupportInfo(int ticketid){
+    public String ShowDetailPageSupportInfo(@RequestParam("ticketid") int ticketid){
         return gsib.getSupportInfoByID(ticketid);
     }
 
     @ResponseBody
     @RequestMapping(value = "/showTheaterInfo",method = RequestMethod.POST)
-    public String ShowTheaterInfo(int ticketid){
+    public String ShowTheaterInfo(@RequestParam("ticketid") int ticketid){
         return gtis.getTheaterInfo(ticketid);
     }
 }
