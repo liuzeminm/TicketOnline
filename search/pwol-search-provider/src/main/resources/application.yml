@@ -1,25 +1,25 @@
 server:
-  port: 7004  #端口号
+  port: 7005  #端口号
 eureka:
   client:
     service-url:
-      defaultZone: http://39.105.144.187:6001/eureka/  #注册中心地址
+      defaultZone: http://localhost:6001/eureka/  #注册中心地址
 spring:
   application:
     name: pwol-search-provider #本服务名字
-  redis:
-    #数据库索引
-    database: 0
-    host: 127.0.0.1
-    port: 6379
-    jedis:
-      pool:
-        #最大连接数
-        max-active: 8
-        #最大空闲
-        max-idle: 8
-        #最小空闲
-        min-idle: 0
+#  redis:
+#    #数据库索引
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    jedis:
+#      pool:
+#        #最大连接数
+#        max-active: 8
+#        #最大空闲
+#        max-idle: 8
+#        #最小空闲
+#        min-idle: 0
   datasource:
     url: jdbc:mysql://localhost:3306/pwol
     username: root
@@ -58,3 +58,14 @@ management:
 #  sleuth:
 #    sampler:
 #      percentage: 1.0
+
+data:
+  elasticsearch:
+    cluster-name: my-cluster-name
+    cluster-nodes: 39.105.144.187:9300
+    properties:
+      path:
+        logs: ./elasticsearch/logs
+        data: ./elasticsearch/data
+    repositories:
+        enabled: false

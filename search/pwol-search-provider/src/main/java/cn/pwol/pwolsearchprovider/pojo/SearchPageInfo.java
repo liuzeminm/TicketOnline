@@ -1,6 +1,8 @@
 package cn.pwol.pwolsearchprovider.pojo;
 
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class SearchPageInfo {

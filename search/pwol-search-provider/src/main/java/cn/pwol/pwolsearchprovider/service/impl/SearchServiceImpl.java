@@ -58,6 +58,16 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public String getTicketNumber(TicketInfo ti, SKUInfo sk) {
+        if (ti==null){
+            TicketInfo tic = new TicketInfo();
+            ti=tic;
+        }
+        if (sk==null){
+            SKUInfo sku = new SKUInfo();
+            sk=sku;
+        }
         return JSON.toJSONString(sm.getTicketNumber(ti, sk));
     }
+
+
 }

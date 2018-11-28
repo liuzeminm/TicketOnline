@@ -1,9 +1,6 @@
 package cn.pwol.pwolsearchprovider.mapping;
 
-import cn.pwol.pwolsearchprovider.pojo.SKUInfo;
-import cn.pwol.pwolsearchprovider.pojo.SearchPageInfo;
-import cn.pwol.pwolsearchprovider.pojo.TheaterInfo;
-import cn.pwol.pwolsearchprovider.pojo.TicketInfo;
+import cn.pwol.pwolsearchprovider.pojo.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

@@ -74,4 +74,5 @@
   <select id="gettheaterInfo" parameterType="int" resultMap="TheaterMap">
     select theatername from theaterinfo where theaterid=#{0} ;
   </select>
+
 </mapper>

@@ -1,9 +1,13 @@
 package cn.pwol.pwolsearchprovider.pojo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.stereotype.Component;
 
 @Component
+@Document(indexName="ticketinfo",type="TicketInfo",indexStoreType="fs",shards=10,replicas=0,refreshInterval="-1")
 public class TicketInfo {
+    @Id
     private Integer ticketid;
 
     private String city;
