@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.pwol.pwolbackgroundprovider.mappin.TicketinfoMapper" >
+<mapper namespace="cn.pwol.pwolbackgroundprovider.dao.TicketinfoMapper" >
   <resultMap id="BaseResultMap" type="cn.pwol.pwolbackgroundprovider.pojo.Ticketinfo" >
     <id column="ticketid" property="ticketid" jdbcType="INTEGER" />
     <result column="city" property="city" jdbcType="VARCHAR" />

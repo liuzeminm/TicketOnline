@@ -1,4 +1,4 @@
-package cn.pwol.pwolbackgroundprovider.mappin;
+package cn.pwol.pwolbackgroundprovider.dao;
 
 import cn.pwol.pwolbackgroundprovider.pojo.Bannerinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.BannerinfoExample;

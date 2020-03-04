@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class DalyConfig {
+public class DelayConfig {
 
     //死信队列
     public final static String DEAD_QUERY="dead-query";

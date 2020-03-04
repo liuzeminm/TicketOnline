@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.pwol.pwolbackgroundprovider.mappin.BannerinfoMapper" >
+<mapper namespace="cn.pwol.pwolbackgroundprovider.dao.BannerinfoMapper" >
   <resultMap id="BaseResultMap" type="cn.pwol.pwolbackgroundprovider.pojo.Bannerinfo" >
     <id column="bannerid" property="bannerid" jdbcType="INTEGER" />
     <result column="bannerurl" property="bannerurl" jdbcType="VARCHAR" />

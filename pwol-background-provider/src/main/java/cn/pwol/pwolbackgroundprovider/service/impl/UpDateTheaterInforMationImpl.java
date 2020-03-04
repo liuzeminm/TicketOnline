@@ -1,9 +1,9 @@
 package cn.pwol.pwolbackgroundprovider.service.impl;
 
-import cn.pwol.pwolbackgroundprovider.mappin.BannerinfoMapper;
-import cn.pwol.pwolbackgroundprovider.mappin.SeatinfoMapper;
-import cn.pwol.pwolbackgroundprovider.mappin.SkuinfoMapper;
-import cn.pwol.pwolbackgroundprovider.mappin.TicketinfoMapper;
+import cn.pwol.pwolbackgroundprovider.dao.BannerinfoMapper;
+import cn.pwol.pwolbackgroundprovider.dao.SeatinfoMapper;
+import cn.pwol.pwolbackgroundprovider.dao.SkuinfoMapper;
+import cn.pwol.pwolbackgroundprovider.dao.TicketinfoMapper;
 import cn.pwol.pwolbackgroundprovider.pojo.Bannerinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.Seatinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.Skuinfo;

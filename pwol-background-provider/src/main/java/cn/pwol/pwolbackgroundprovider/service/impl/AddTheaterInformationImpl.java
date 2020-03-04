@@ -1,14 +1,14 @@
 package cn.pwol.pwolbackgroundprovider.service.impl;
 
-import cn.pwol.pwolbackgroundprovider.mappin.*;
+import cn.pwol.pwolbackgroundprovider.dao.*;
 import cn.pwol.pwolbackgroundprovider.pojo.*;
 import cn.pwol.pwolbackgroundprovider.service.AddTheaterInformation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 @Transactional
 public class AddTheaterInformationImpl implements AddTheaterInformation {
@@ -22,6 +22,12 @@ public class AddTheaterInformationImpl implements AddTheaterInformation {
     SupportinfoMapper supportinfoMapper;
     @Autowired
     TicketinfoMapper ticketinfoMapper;
+
+    @Override
+    public boolean AddMessage(Ticketinfo ticketinfo, List<Skuinfo> skuinfoList, List<Seatinfo> seatinfoList, Bannerinfo bannerinfo, Supportinfo supportinfo) {
+        return false;
+    }
+
     @Override
     public boolean AddTheaterInformation(Ticketinfo ticketinfo) {
         if (ticketinfoMapper.insertSelective(ticketinfo) != 1){

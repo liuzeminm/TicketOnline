@@ -1,4 +1,4 @@
-package cn.pwol.pwolbackgroundprovider.mappin;
+package cn.pwol.pwolbackgroundprovider.dao;
 
 import cn.pwol.pwolbackgroundprovider.pojo.Ticketinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.TicketinfoExample;

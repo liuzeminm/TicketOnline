@@ -5,6 +5,12 @@ import cn.pwol.pwolbackgroundprovider.pojo.*;
 import java.util.List;
 
 public interface AddTheaterInformation {
+
+    boolean AddMessage(Ticketinfo ticketinfo,
+                       List<Skuinfo> skuinfoList,
+                       List<Seatinfo> seatinfoList,
+                       Bannerinfo bannerinfo,
+                       Supportinfo supportinfo);
     /**
      * 添加影院信息
      * @param ticketinfo

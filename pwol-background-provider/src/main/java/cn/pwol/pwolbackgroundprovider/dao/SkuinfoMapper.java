@@ -1,4 +1,4 @@
-package cn.pwol.pwolbackgroundprovider.mappin;
+package cn.pwol.pwolbackgroundprovider.dao;
 
 import cn.pwol.pwolbackgroundprovider.pojo.Skuinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.SkuinfoExample;

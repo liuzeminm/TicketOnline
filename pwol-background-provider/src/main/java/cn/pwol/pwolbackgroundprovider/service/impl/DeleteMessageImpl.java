@@ -1,8 +1,8 @@
 package cn.pwol.pwolbackgroundprovider.service.impl;
 
-import cn.pwol.pwolbackgroundprovider.config.DalyConfig;
-import cn.pwol.pwolbackgroundprovider.mappin.BannerinfoMapper;
-import cn.pwol.pwolbackgroundprovider.mappin.TicketinfoMapper;
+import cn.pwol.pwolbackgroundprovider.config.DelayConfig;
+import cn.pwol.pwolbackgroundprovider.dao.BannerinfoMapper;
+import cn.pwol.pwolbackgroundprovider.dao.TicketinfoMapper;
 import cn.pwol.pwolbackgroundprovider.pojo.Bannerinfo;
 import cn.pwol.pwolbackgroundprovider.pojo.Ticketinfo;
 import cn.pwol.pwolbackgroundprovider.service.DeleteMessage;
@@ -11,25 +11,24 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sun.plugin2.message.Message;
-import sun.rmi.runtime.Log;
 import sun.rmi.transport.Channel;
 @Service
 @Slf4j
-public class DelectMessageImpl implements DeleteMessage {
+public class DeleteMessageImpl implements DeleteMessage {
 
     @Autowired
     private BannerinfoMapper bannerinfoMapper;
     @Autowired
     private TicketinfoMapper ticketinfoMapper;
     @Override
-    @RabbitListener(queues = {DalyConfig.USER_QUERY})
+    @RabbitListener(queues = {DelayConfig.USER_QUERY})
     public void DeleteTickeInfoMessag(Ticketinfo ticketinfo, Message message, Channel channel) {
-        Integer ticketid = ticketinfo.getTicketid();
+        Integer ticketId = ticketinfo.getTicketid();
         try {
-            if (ticketid != null) {
-                int selectOneStste = ticketinfoMapper.selectOneStste(ticketid);
+            if (ticketId != null) {
+                int selectOneStste = ticketinfoMapper.selectOneStste(ticketId);
                 if (selectOneStste != 0){
-                    ticketinfoMapper.deleteByPrimaryKey(ticketid);
+                    ticketinfoMapper.deleteByPrimaryKey(ticketId);
                 }
             }
         }catch (Exception e){
@@ -41,14 +40,14 @@ public class DelectMessageImpl implements DeleteMessage {
     }
 
     @Override
-    @RabbitListener(queues = {DalyConfig.USER_QUERY})
+    @RabbitListener(queues = {DelayConfig.USER_QUERY})
     public void DeleteBannerInfoMessag(Bannerinfo bannerinfo, Message message, Channel channel) {
-        Integer bannerid = bannerinfo.getBannerid();
+        Integer bannerId = bannerinfo.getBannerid();
         try {
-            if (bannerid != null){
-                int selectOneStste = bannerinfoMapper.selectOneStste(bannerid);
+            if (bannerId != null){
+                int selectOneStste = bannerinfoMapper.selectOneStste(bannerId);
                 if (selectOneStste != 0){
-                    bannerinfoMapper.deleteByPrimaryKey(bannerid);
+                    bannerinfoMapper.deleteByPrimaryKey(bannerId);
                 }
             }
         }catch (Exception e){
